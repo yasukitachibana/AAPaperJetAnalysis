@@ -1,0 +1,38 @@
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /opt/anaconda3/envs/conda_root/bin/x86_64-apple-darwin13.4.0-clang++ 
+Build flags: -march=core2;-mtune=haswell;-mssse3;-ftree-vectorize;-fPIC;-fPIE;-fstack-protector-strong;-O2;-pipe;-stdlib=libc++;-fvisibility-inlines-hidden;-std=c++14;-fmessage-length=0;-isystem;/opt/anaconda3/envs/conda_root/include
+Id flags:  
+
+The output was:
+1
+ld: unsupported tapi file type '!tapi-tbd' in YAML file '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd' for architecture x86_64
+clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /opt/anaconda3/envs/conda_root/bin/x86_64-apple-darwin13.4.0-clang 
+Build flags: -march=core2;-mtune=haswell;-mssse3;-ftree-vectorize;-fPIC;-fPIE;-fstack-protector-strong;-O2;-pipe;-isystem;/opt/anaconda3/envs/conda_root/include
+Id flags:  
+
+The output was:
+1
+ld: unsupported tapi file type '!tapi-tbd' in YAML file '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd' for architecture x86_64
+clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /Users/yasukitachibana/AIUGoogleDrive/Codes/NewAnalysisCode/fjcore/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_41948/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_41948.dir/build.make CMakeFiles/cmTC_41948.dir/build
+Building CXX object CMakeFiles/cmTC_41948.dir/testCXXCompiler.cxx.o
+/opt/anaconda3/envs/conda_root/bin/x86_64-apple-darwin13.4.0-clang++    -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem /opt/anaconda3/envs/conda_root/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk   -o CMakeFiles/cmTC_41948.dir/testCXXCompiler.cxx.o -c /Users/yasukitachibana/AIUGoogleDrive/Codes/NewAnalysisCode/fjcore/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_41948
+/usr/local/Cellar/cmake/3.17.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41948.dir/link.txt --verbose=1
+/opt/anaconda3/envs/conda_root/bin/x86_64-apple-darwin13.4.0-clang++  -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem /opt/anaconda3/envs/conda_root/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/opt/anaconda3/envs/conda_root/lib -L/opt/anaconda3/envs/conda_root/lib  CMakeFiles/cmTC_41948.dir/testCXXCompiler.cxx.o  -o cmTC_41948 
+ld: unsupported tapi file type '!tapi-tbd' in YAML file '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libSystem.tbd' for architecture x86_64
+clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_41948] Error 1
+make: *** [cmTC_41948/fast] Error 2
+
+
+

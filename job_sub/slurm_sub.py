@@ -46,7 +46,7 @@ def main():
     parser.add_argument("--e", type=str, default="/dev/null")
     parser.add_argument("--o", type=str, default="/dev/null")
 
-    parser.add_argument("--root", type=str, default="ON")
+    parser.add_argument("--root", type=str, default="OFF")
     parser.add_argument("--d", type=str, default="../build")
 
     parser.add_argument("--n", type=str, default="jet_analysis")

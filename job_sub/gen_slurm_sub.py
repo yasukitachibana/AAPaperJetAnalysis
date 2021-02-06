@@ -16,6 +16,8 @@ def generate(args):
 
     command_tail = '--args "{} {} {}"'.format(xml,input,output)
     
+    command = command_head + ' ' + command_tail
+    
     os.system(command)
     print("#################\n")
     print("\n")

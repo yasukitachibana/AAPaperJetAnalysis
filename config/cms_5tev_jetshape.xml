@@ -31,11 +31,11 @@
     
     <hadronPtMin>
     <Item>0.7</Item><Item>2.0</Item><Item>4.0</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item> <Item>0.7</Item>
-     <Item>0.7</Item> <Item>0.7</Item> <Item>0.7</Item>
+     <Item>0.7</Item> <Item>0.7</Item>
     </hadronPtMin>
     <hadronPtMax>
     <Item>300</Item><Item>300</Item><Item>300</Item><Item>1.0</Item><Item>2.0</Item><Item>3.0</Item><Item>4.0</Item><Item>8.0</Item><Item>12.0</Item>
-    <Item>12.0</Item><Item>16.0</Item><Item>20.0</Item>
+    <Item>16.0</Item><Item>20.0</Item>
     </hadronPtMax>
     
     

@@ -29,7 +29,7 @@ def submission(args):
     command = head + ' ' + master_command + ' ' + command
 
     print("-\n#Submission: ",command)
-    #os.system(command)
+    os.system(command)
     print("---\n")
     
 def main():

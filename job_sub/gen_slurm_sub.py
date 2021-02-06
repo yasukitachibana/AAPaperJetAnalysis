@@ -14,8 +14,9 @@ def generate(args):
     command_head = 'python slurm_sub.py --p {} --time {} --mem {} --n {} --o {} --e {} --c {}'
     command_head = command_head.format(args.p, args.time, args.mem, args.n, args.o, args.e, args.c)
 
-    print('Exe:', command_head)
-    #os.system(command)
+    command_tail = '--args "{} {} {}"'.format(xml,input,output)
+    
+    os.system(command)
     print("#################\n")
     print("\n")
     

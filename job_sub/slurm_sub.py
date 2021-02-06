@@ -15,7 +15,7 @@ def submission(args):
     head = head.format(args.p, args.time, args.mem, args.n, args.o, args.e)
     print( "#slurm sub: ", head)
 
-    master_command = os.path.join(cwd,'JobMaster') + ' "' + cwd + '" python run.py {}'
+    master_command = os.path.join(cwd,'JobMaster') + ' "' + cwd + '" "python run.py {}'
     master_command = master_command.format( os.path.join(cwd, args.d) )
     print( "-\n#master command: ", master_command)
     
@@ -26,7 +26,7 @@ def submission(args):
         command = root + '; ' + command
     print( "-\n#command: ", command)
 
-    command = head + ' ' + master_command + ' ' + command
+    command = head + ' ' + master_command + ' ' + command + '"'
 
     print("-\n#Submission: ",command)
     os.system(command)

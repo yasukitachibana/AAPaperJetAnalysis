@@ -1,0 +1,64 @@
+import os
+import sys
+import pathlib
+import re
+import numpy as np
+
+
+
+def submission(args):
+
+    cwd = os.getcwd()
+    
+    head = 'sbatch -q {} --time {} --mem {} --job-name {} -o {} -e {}'
+    head = head.format(args.p, args.time, args.mem, args.n, args.o, args.e)
+    print( "\n#slurm sub: ", head)
+
+    master_command = os.path.join(cwd,'JobMaster') + ' "' + cwd + '" python run.py {}'
+    master_command = master_command.format( os.path.join(cwd, args.d) )
+    print( "\n#master command: ", master_command)
+    
+    
+    command = '{} {}'.format(args.c, args.args)
+    print( "\n#command: ", command)
+
+    command = head + ' ' + master_command + ' ' + command
+
+    print("\n#Submission: ",command)
+    os.system(command)
+
+    
+def main():
+
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("--p", type=str, default="primary")
+    
+    parser.add_argument("--time", type=str, default="720:00:00")
+    parser.add_argument("--mem", type=str, default="16G")
+    
+    parser.add_argument("--e", type=str, default="/dev/null")
+    parser.add_argument("--o", type=str, default="/dev/null")
+
+    parser.add_argument("--root", type=str, default="ON")
+    parser.add_argument("--d", type=str, default="../build")
+
+    parser.add_argument("--n", type=str, default="jet_analysis")
+    parser.add_argument("--c", type=str, default="")
+    parser.add_argument("--args", type=str, default="")
+    
+    args = parser.parse_args()
+    if args.c == "":
+        print('Please pass command' )
+        exit()
+
+
+    submission(args)
+
+
+
+
+if __name__ == '__main__':
+    main()

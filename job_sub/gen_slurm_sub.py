@@ -8,7 +8,7 @@ import numpy as np
 
 def generate(args):
 
-    xml, input, output = manage_path(args.xml, args.in, args.out)
+    xml, input, output = manage_path(args.xml, args.input, args.output)
     Mkdirs(output)
 
     command_head = 'python slurm_sub.py --p {} --time {} --mem {} --n {} --o {} --e {} --c {}'
@@ -56,8 +56,8 @@ def main():
     parser.add_argument("--c", type=str, default="./Main")
 
     parser.add_argument("--xml", type=str, default="")
-    parser.add_argument("--in", type=str, default="")
-    parser.add_argument("--out", type=str, default="")
+    parser.add_argument("--input", type=str, default="")
+    parser.add_argument("--output", type=str, default="")
     
     args = parser.parse_args()
 

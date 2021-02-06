@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
-<!--CMS Jet Shape-->
-<!--https://www.hepdata.net/record/ins1658057-->
-<!--Table 11-->
+<!--ATLAS D(pt)-->
+<!--https://www.hepdata.net/record/ins1673177-->
+<!--https://arxiv.org/pdf/1805.05424.pdf-->
 
 <jetanalysis>
     
@@ -13,48 +13,40 @@
     <jetR>0.4</jetR>
     <chJet>0</chJet><!-- 0: full jet, 1: charged jet -->
     
-    <jetRapidity>1</jetRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
-    <jetRapMin><Item>0</Item></jetRapMin>
-    <jetRapMax><Item>1.6</Item></jetRapMax>
+    <jetRapidity>0</jetRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
+    <jetRapMin><Item>0.0</Item><Item>0.0</Item><Item>1.2</Item><Item>0.3</Item><Item>0.8</Item></jetRapMin>
+    <jetRapMax><Item>2.1</Item><Item>0.3</Item><Item>2.1</Item><Item>0.8</Item><Item>1.2</Item></jetRapMax>
     
-    <jetPtMin><Item>120</Item></jetPtMin>
-    <jetPtMax><Item>5020</Item></jetPtMax>
+    <jetPtMin><Item>126</Item><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item></jetPtMin>
+    <jetPtMax><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item><Item>398</Item></jetPtMax>
 
     <!-- Hadrons -->
-    <observable>jetshape</observable>
+    <observable>ffpt</observable>
     
     <chHadron>1</chHadron><!-- 0: hadrons, 1: charged hadrons -->
     
-    <hadronRapidity>1</hadronRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
-    <hadronRapMin><Item>0</Item></hadronRapMin>
-    <hadronRapMax><Item>2.4</Item></hadronRapMax>
+    <hadronRapidity>0</hadronRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
+    <hadronRapMin><Item>0.0</Item></hadronRapMin>
+    <hadronRapMax><Item>3.0</Item></hadronRapMax>
     
-    <hadronPtMin>
-    <Item>0.7</Item><Item>2.0</Item><Item>4.0</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item> <Item>0.7</Item>
-     <Item>0.7</Item> <Item>0.7</Item>
-    </hadronPtMin>
-    <hadronPtMax>
-    <Item>300</Item><Item>300</Item><Item>300</Item><Item>1.0</Item><Item>2.0</Item><Item>3.0</Item><Item>4.0</Item><Item>8.0</Item><Item>12.0</Item>
-    <Item>16.0</Item><Item>20.0</Item>
-    </hadronPtMax>
+    <hadronPtMin><Item>1.0</Item></hadronPtMin>
+    <hadronPtMax><Item>398</Item></hadronPtMax>
     
     
     <binEdges>
-        <Item>0</Item>
-        <Item>0.05</Item>
-        <Item>0.1</Item>
-        <Item>0.15</Item>
-        <Item>0.2</Item>
-        <Item>0.25</Item>
-        <Item>0.3</Item>
-        <Item>0.35</Item>
-        <Item>0.4</Item>
-        <Item>0.45</Item>
-        <Item>0.5</Item>
-        <Item>0.6</Item>
-        <Item>0.7</Item>
-        <Item>0.8</Item>
         <Item>1.0</Item>
+        <Item>1.58</Item>
+        <Item>2.51</Item>
+        <Item>3.98</Item>
+        <Item>6.31</Item>
+        <Item>10.0</Item>
+        <Item>15.85</Item>
+        <Item>25.12</Item>
+        <Item>39.81</Item>
+        <Item>63.09</Item>
+        <Item>100.0</Item>
+        <Item>158.49</Item>
+        <Item>251.18</Item>
     </binEdges>
     
 

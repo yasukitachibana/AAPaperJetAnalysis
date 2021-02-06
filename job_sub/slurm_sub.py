@@ -8,25 +8,29 @@ import numpy as np
 
 def submission(args):
 
+    print("\n---")
     cwd = os.getcwd()
     
     head = 'sbatch -q {} --time {} --mem {} --job-name {} -o {} -e {}'
     head = head.format(args.p, args.time, args.mem, args.n, args.o, args.e)
-    print( "\n#slurm sub: ", head)
+    print( "#slurm sub: ", head)
 
     master_command = os.path.join(cwd,'JobMaster') + ' "' + cwd + '" python run.py {}'
     master_command = master_command.format( os.path.join(cwd, args.d) )
-    print( "\n#master command: ", master_command)
+    print( "-\n#master command: ", master_command)
     
-    
+    root = 'module load root/6.14.06; .  /wsu/el7/gnu7/root/6.14.06/bin/thisroot.sh'
     command = '{} {}'.format(args.c, args.args)
-    print( "\n#command: ", command)
+    
+    if args.root == "ON":
+        command = root + '; ' + command
+    print( "-\n#command: ", command)
 
     command = head + ' ' + master_command + ' ' + command
 
-    print("\n#Submission: ",command)
-    os.system(command)
-
+    print("-\n#Submission: ",command)
+    #os.system(command)
+    print("---\n")
     
 def main():
 

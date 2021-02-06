@@ -11,8 +11,8 @@ def generate(args):
     xml, input, output = manage_path(args.xml, args.input, args.output)
     Mkdirs(output)
 
-    command_head = 'python slurm_sub.py --p {} --time {} --mem {} --n {} --o {} --e {} --c {}'
-    command_head = command_head.format(args.p, args.time, args.mem, args.n, args.o, args.e, args.c)
+    command_head = 'python slurm_sub.py --p {} --time {} --mem {} --n {} --o {} --e {} --c {} --root {} '
+    command_head = command_head.format(args.p, args.time, args.mem, args.n, args.o, args.e, args.c, args.root)
 
     command_tail = '--args "{} {} {}"'.format(xml,input,output)
     

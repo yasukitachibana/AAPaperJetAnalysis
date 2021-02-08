@@ -16,6 +16,8 @@ public:
 
     virtual double ptSubtraction( std::shared_ptr<Particle> particle ){ return  particle->perp(); }
 
+    virtual double nSubtraction( std::shared_ptr<Particle> particle ){ return  1.0; }
+
     
 protected:
     

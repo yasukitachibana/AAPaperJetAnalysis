@@ -51,3 +51,13 @@ double SubNegatives::ptSubtraction( std::shared_ptr<Particle> particle ){
     }
     
 }
+
+double SubNegatives::nSubtraction( std::shared_ptr<Particle> particle ){
+    
+    if( particle->GetStat() != -1 ){
+        return 1.0;
+    }else{
+        return -1.0;
+    }
+    
+}

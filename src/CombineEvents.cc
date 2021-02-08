@@ -1,5 +1,7 @@
 #include "CombineEvents.h"
 #include "CombineJetShape.h"
+#include "CombineFfPt.h"
+#include "CombineFfZ.h"
 
 CombineEvents::CombineEvents(){
     std::cout << "-@-Creating CombineEvents"<<std::endl;
@@ -16,8 +18,25 @@ void CombineEvents::Init(){
     if( observable == "jetshape") {
         std::cout << "[CombineEvents] Combine jet shape results" << std::endl;
         combine_ptr = std::unique_ptr<CombineJetShape> (new CombineJetShape());
-        combine_ptr->Init();
+    }else if( observable == "ffpt") {
+        std::cout << "[CombineEvents] Combine fragmentation function (pt)" << std::endl;
+        combine_ptr = std::unique_ptr<CombineFfPt> (new CombineFfPt());
+    }else if( observable == "ffz") {
+        std::cout << "[CombineEvents] Combine fragmentation function (z)" << std::endl;
+        combine_ptr = std::unique_ptr<CombineFfZ> (new CombineFfZ());
+    }else{
+        std::cout << std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+        std::cout << "[CombineEvents] Observable: " << observable << " is not suported" << std::endl;
+        std::cout << "[CombineEvents] Exit. "<< std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+        std::cout << std::endl;
+        exit(-1);
     }
+    
+    combine_ptr->Init();
+    
+    
 
 }
 

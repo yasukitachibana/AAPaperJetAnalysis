@@ -34,13 +34,8 @@ void CombineJetShape::GetTotalHist(std::string total_hist_name){
         total_hist.Print("normalized_jetshape_");
 
     }else{
-        std::cout << std::endl;
-        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
         std::cout << "[CombineJetShape] 0-total Jet" << std::endl;
-        std::cout << "[CombineJetShape] Exit. "<< std::endl;
-        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
-        std::cout << std::endl;
-        exit(-1);
+        std::cout << "[CombineJetShape] Skip. "<< std::endl;
     }
     
     total_hist.DeleteTH1D();

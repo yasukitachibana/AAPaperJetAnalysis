@@ -2,7 +2,10 @@
 #define ANALYZEEVENTS_H_
 
 #include "AnalyzeBase.h"
+#include "JetSpec.h"
 #include "JetShape.h"
+#include "FfPt.h"
+#include "FfZ.h"
 #include <iostream>
 #include <vector>
 

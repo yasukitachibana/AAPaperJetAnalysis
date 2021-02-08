@@ -19,13 +19,29 @@ void AnalyzeEvents::Init(){
     observable = SetXML::Instance()->GetElementText({"observable"});
     
     
-    if( observable == "jetshape") {
+    if( observable == "jetspec") {
+        std::cout << "[AnalyzeEvents] jet spectrum analysis" << std::endl;
+        analyze_ptr = std::unique_ptr<JetSpec> (new JetSpec());
+    }else if( observable == "jetshape") {
         std::cout << "[AnalyzeEvents] jet shape analysis" << std::endl;
         analyze_ptr = std::unique_ptr<JetShape> (new JetShape());
-        analyze_ptr->Init();
+    }else if( observable == "ffpt") {
+        std::cout << "[AnalyzeEvents] fragmentation function (pt) analysis" << std::endl;
+        analyze_ptr = std::unique_ptr<FfPt> (new FfPt());
+    }else if( observable == "ffz") {
+        std::cout << "[AnalyzeEvents] fragmentation function (z) analysis" << std::endl;
+        analyze_ptr = std::unique_ptr<FfZ> (new FfZ());
+    }else{
+        std::cout << std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+        std::cout << "[AnalyzeEvents] Observable: " << observable << " is not suported" << std::endl;
+        std::cout << "[AnalyzeEvents] Exit. "<< std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+        std::cout << std::endl;
+        exit(-1);
     }
     
-    
+    analyze_ptr->Init();
 }
 
 void AnalyzeEvents::Analyze(){

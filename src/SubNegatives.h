@@ -14,6 +14,7 @@ public:
                    std::vector<std::shared_ptr<Particle>> particle_list );
     
     double ptSubtraction( std::shared_ptr<Particle> particle );
+    double nSubtraction( std::shared_ptr<Particle> particle );
     
 private:
     

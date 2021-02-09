@@ -1,11 +1,76 @@
 import sys
+import glob
+import os
+import numpy as np
 
+
+def error_divide(val_num, err_num, val_den, err_den):
+    a = err_num/val_den
+    b = err_den*val_num/val_den/val_den
+    return np.sqrt(a*a+b*b)
+
+def divide(dat_num, dat_den):
+
+    result = np.zeros( ( len(dat_num[:,0]), 5) )
+    result[:,0:3] = dat_num[:,0:3]
+    result[:,3] = np.nan_to_num( dat_num[:,3]/dat_den[:,3] , nan=0 )
+    result[:,4] = np.nan_to_num( error_divide(dat_num[:,3],dat_num[:,4],dat_den[:,3],dat_den[:,4]) )
+    
+    return result
+    
+def get_raa(dir_pp, dir_AA):
+
+    print('#pp dir: ', dir_pp)
+    print('#AA dir: ', dir_AA)
+    
+    files_AA = glob.glob(os.path.join(dir_AA,'*.txt'))
+
+    for fAA in files_AA:
+
+        fpp = os.path.join(dir_pp,fAA.split()[-1])
+        print('--pp file: ', fpp)
+        print('--AA file: ', fAA)
+        
+        dat_pp = np.loadtxt(fpp, comments='#')
+        dat_AA = np.loadtxt(fAA, comments='#')
+        
+        result = divide(dat_AA, dat_pp)
+        
+        filename = os.path.join(dir_AA,'raa_'+fAA.split()[-1])
+        #np.savetxt(filename,result)
+
+
+def main():
+
+    import argparse
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("--pp", type=str, default="No Input For pp")
+    parser.add_argument("--AA", type=str, default="No Input For AA")
+    args = parser.parse_args()
+
+    args_error_exit( args )
+    dir_pp = args.pp
+    dir_AA = args.AA
+
+    get_raa(dir_pp, dir_AA)
+    
+
+def args_error( arg, ppAA ):
+    if arg == "No Input For {}".format(ppAA):
+        print(arg, ' Specify Input Directory for {} with --{}'.format(ppAA,ppAA) )
+        return False
+    return True
+
+def args_error_exit( args ):
+    pp = args_error( args.pp, 'pp' )
+    aa = args_error( args.AA, 'AA' )
+    if not pp or not aa:
+        print('Exit.')
+        exit()
 
 if __name__ == '__main__':
-    argvs = sys.argv
-    argc = len(argvs)
-    Main(argc,argvs)
-
+    main()
 
 
 
@@ -170,54 +235,6 @@ if __name__ == '__main__':
 #    py = py[i_hydro]
 #    #---------------------------------------------------------------------
 #    #---------------------------------------------------------------------
-#
-#    init_x = np.zeros((5,3))
-#    GetOutput(location,tags,'init_info',init_x,init_infos,n_ev_true)
-#
-#    GetOutput(location,tags,option_tag+'mass2_sh',x,mass2_sh,n_ev_true)
-#    GetOutput(location,tags,option_tag+'energy_sh',x,energy_sh,n_ev_true)
-#    GetOutput(location,tags,option_tag+'px_sh',x,px_sh,n_ev_true)
-#    GetOutput(location,tags,option_tag+'py_sh',x,py_sh,n_ev_true)
-#    GetOutput(location,tags,option_tag+'pz_sh',x,pz_sh,n_ev_true)
-#
-#
-#    GetOutputDerivatives(location,tags,option_tag+'mass2_sh',x,mass2_sh,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'energy_sh',x,energy_sh,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'px_sh',x,px_sh,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'py_sh',x,py_sh,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'pz_sh',x,pz_sh,n_ev_true)
-#
-#    if len(tags)<=2:
-#        exit()
-#
-#    GetOutput(location,tags,option_tag+'mass2',x,mass2,n_ev_true)
-#    GetOutput(location,tags,option_tag+'energy',x,energy,n_ev_true)
-#    GetOutput(location,tags,option_tag+'px',x,px,n_ev_true)
-#    GetOutput(location,tags,option_tag+'py',x,py,n_ev_true)
-#    GetOutput(location,tags,option_tag+'pz',x,pz,n_ev_true)
-#
-#    GetOutput(location,tags,option_tag+'mass2_lq',x,mass2_lq,n_ev_true)
-#    GetOutput(location,tags,option_tag+'energy_lq',x,energy_lq,n_ev_true)
-#    GetOutput(location,tags,option_tag+'px_lq',x,px_lq,n_ev_true)
-#    GetOutput(location,tags,option_tag+'py_lq',x,py_lq,n_ev_true)
-#    GetOutput(location,tags,option_tag+'pz_lq',x,pz_lq,n_ev_true)
-#    #---------------------------------------------------------------------
-#    #---------------------------------------------------------------------
-#    GetOutputDerivatives(location,tags,option_tag+'mass2',x,mass2,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'energy',x,energy,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'px',x,px,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'py',x,py,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'pz',x,pz,n_ev_true)
-#
-#
-#    GetOutputDerivatives(location,tags,option_tag+'mass2_lq',x,mass2_lq,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'energy_lq',x,energy_lq,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'px_lq',x,px_lq,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'py_lq',x,py_lq,n_ev_true)
-#    GetOutputDerivatives(location,tags,option_tag+'pz_lq',x,pz_lq,n_ev_true)
-#
-#
-#
 #def GetOutputDerivatives(location,tags,label,x,data,n_ev_true):
 #
 #    delta = np.zeros( (len(data[:,0]),len(data[0,:]))      )
@@ -321,12 +338,4 @@ if __name__ == '__main__':
 #    filename = 'avr_'+label+'_vs_theta.txt'
 #    return os.path.join(dir,filename)
 ############################################################################################
-#
-#def GetIx(location,tags):
-#    filename = GetShowerFileName(location,tags,'energy',0)
-#    dat = np.loadtxt(filename, comments='#')
-#    return dat[:,:3]
-#
-#def GetMass(energy_i,px_i,py_i,pz_i):
-#    return energy_i*energy_i-px_i*px_i-py_i*py_i-pz_i*pz_i
-#
+

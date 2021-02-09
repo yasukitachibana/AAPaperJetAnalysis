@@ -63,6 +63,9 @@ def main():
     parser.add_argument("--output", type=str, default="")
     
     args = parser.parse_args()
+    
+    if args.xml == "" or args.input == "" or args.output == "":
+        exit()
 
     generate(args)
 

@@ -13,10 +13,13 @@ SubNegatives.cc
 AnalyzeBase.cc
 JetShape.cc
 JetSpec.cc
+HadSpec.cc
 FfPt.cc
 FfZ.cc
 CombineBase.cc
 CombineJetShape.cc
+CombineHadSpec.cc
+CombineJetSpec.cc
 CombineFfPt.cc
 CombineFfZ.cc
 )

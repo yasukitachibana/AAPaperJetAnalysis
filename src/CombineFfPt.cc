@@ -9,7 +9,7 @@ CombineFfPt::~CombineFfPt(){
     std::cout << "-$-Deleting CombineFfPt"<<std::endl;
 }
 
-void CombineFfPt::GetTotalHist(std::string total_hist_name){
+void CombineFfPt::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
     Histogram total_hist(total_hist_name);
     total_hist.Init();

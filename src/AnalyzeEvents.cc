@@ -19,7 +19,10 @@ void AnalyzeEvents::Init(){
     observable = SetXML::Instance()->GetElementText({"observable"});
     
     
-    if( observable == "jetspec") {
+    if( observable == "hadspec") {
+        std::cout << "[AnalyzeEvents] particle spectrum analysis" << std::endl;
+        analyze_ptr = std::unique_ptr<HadSpec> (new HadSpec());
+    }else if( observable == "jetspec") {
         std::cout << "[AnalyzeEvents] jet spectrum analysis" << std::endl;
         analyze_ptr = std::unique_ptr<JetSpec> (new JetSpec());
     }else if( observable == "jetshape") {

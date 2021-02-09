@@ -30,7 +30,8 @@ private:
                   double hpmin, double hpmax,
                   double hrmin, double hrmax);
     
-    virtual void GetTotalHist(std::string total_hist_name){}
+    virtual double GetDeltaRapidity(double jrmin, double jrmax, double hrmin, double hrmax){ return 2.0*(jrmax-jrmin); }
+    virtual void GetTotalHist(std::string total_hist_name, double delta_rapidity){}
     
     void DeleteHist();
     

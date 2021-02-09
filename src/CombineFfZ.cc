@@ -9,7 +9,7 @@ CombineFfZ::~CombineFfZ(){
     std::cout << "-$-Deleting CombineFfZ"<<std::endl;
 }
 
-void CombineFfZ::GetTotalHist(std::string total_hist_name){
+void CombineFfZ::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
     Histogram total_hist(total_hist_name);
     total_hist.Init();

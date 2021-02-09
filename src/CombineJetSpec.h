@@ -1,13 +1,13 @@
-#ifndef COMBINEJETSHAPE_H_
-#define COMBINEJETSHAPE_H_
+#ifndef COMBINEJETSPEC_H_
+#define COMBINEJETSPEC_H_
 
 #include "CombineBase.h"
 #include <iostream>
 
-class CombineJetShape: public CombineBase{
+class CombineJetSpec: public CombineBase{
 public:
-    CombineJetShape();
-    ~CombineJetShape();
+    CombineJetSpec();
+    ~CombineJetSpec();
     
 private:
     

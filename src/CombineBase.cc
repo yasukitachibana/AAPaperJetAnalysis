@@ -87,7 +87,10 @@ void CombineBase::CombineHist( double jpmin, double jpmax,
                                      jrmin, jrmax,
                                      hpmin,  hpmax,
                                      hrmin, hrmax);
-    GetTotalHist(hist_name);
+    
+    double delta_rapidity = GetDeltaRapidity(jrmin, jrmax,
+                                      hrmin, hrmax);
+    GetTotalHist(hist_name, delta_rapidity);
 
 }
 

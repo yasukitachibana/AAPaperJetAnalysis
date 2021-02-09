@@ -1,4 +1,6 @@
 #include "CombineEvents.h"
+#include "CombineJetSpec.h"
+#include "CombineHadSpec.h"
 #include "CombineJetShape.h"
 #include "CombineFfPt.h"
 #include "CombineFfZ.h"
@@ -15,8 +17,15 @@ CombineEvents::~CombineEvents(){
 
 void CombineEvents::Init(){
     observable = SetXML::Instance()->GetElementText({"observable"});    std::cout << "[CombineEvents] Start CombineEvents"<<std::endl;
-    if( observable == "jetshape") {
-        std::cout << "[CombineEvents] Combine jet shape results" << std::endl;
+    
+    if( observable == "hadspec") {
+        std::cout << "[CombineEvents] Combine particle spectrum" << std::endl;
+        combine_ptr = std::unique_ptr<CombineHadSpec> (new CombineHadSpec());
+    }else if( observable == "jetspec") {
+        std::cout << "[CombineEvents] Combine jet spectrum" << std::endl;
+        combine_ptr = std::unique_ptr<CombineJetSpec> (new CombineJetSpec());
+    }else if( observable == "jetshape") {
+        std::cout << "[CombineEvents] Combine jet shape" << std::endl;
         combine_ptr = std::unique_ptr<CombineJetShape> (new CombineJetShape());
     }else if( observable == "ffpt") {
         std::cout << "[CombineEvents] Combine fragmentation function (pt)" << std::endl;

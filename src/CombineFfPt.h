@@ -11,7 +11,7 @@ public:
     
 private:
     
-    void GetTotalHist(std::string total_hist_name);
+    void GetTotalHist(std::string total_hist_name, double delta_rapidity);
 
 };
 

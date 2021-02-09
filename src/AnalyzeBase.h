@@ -28,6 +28,16 @@ protected:
     
     double jetR;
     
+    std::vector<double> jetRapMin;
+    std::vector<double> jetRapMax;
+    std::vector<double> jetPtMin;
+    std::vector<double> jetPtMax;
+    
+    std::vector<double> hadRapMin;
+    std::vector<double> hadRapMax;
+    std::vector<double> hadPtMin;
+    std::vector<double> hadPtMax;
+    
     bool HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array<int, 2>> &i_h );
     std::shared_ptr<Histogram> GetHist(int i_jet_pt, int i_jet_rap, int i_had_pt, int i_had_rap);
     std::unique_ptr<SubtractionBase> sub_ptr;
@@ -38,7 +48,7 @@ private:
     virtual void SetObservable(fjcore::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j ){}
     
     void EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num);
-    void OneEventAnalysis(std::vector<std::shared_ptr<Particle>> particle_list);
+    virtual void OneEventAnalysis(std::vector<std::shared_ptr<Particle>> particle_list);
     
     std::vector<fjcore::PseudoJet> JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list );
     
@@ -74,22 +84,14 @@ private:
     
 
     
-
+    
     int chJet;
     //    double primHadPtMin;
     //    int chPrimHad;
     int jetRapidity;
-    std::vector<double> jetRapMin;
-    std::vector<double> jetRapMax;
-    std::vector<double> jetPtMin;
-    std::vector<double> jetPtMax;
     
     int chHad;
     int hadRapidity;
-    std::vector<double> hadRapMin;
-    std::vector<double> hadRapMax;
-    std::vector<double> hadPtMin;
-    std::vector<double> hadPtMax;
     
     double largestRapidity;
     double jetPtCut; 

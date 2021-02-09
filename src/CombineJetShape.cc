@@ -9,7 +9,7 @@ CombineJetShape::~CombineJetShape(){
     std::cout << "-$-Deleting CombineJetShape"<<std::endl;
 }
 
-void CombineJetShape::GetTotalHist(std::string total_hist_name){
+void CombineJetShape::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
     Histogram total_hist(total_hist_name);
     total_hist.Init();

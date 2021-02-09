@@ -18,6 +18,19 @@ def divide(dat_num, dat_den):
     
     return result
     
+def file_excluded(filename):
+
+    a = filename.startswith('raa')
+    b = filename.startswith('CMake')
+    c = filename.startswith('hist')
+    d = filename.startswith('count')
+
+    if a or b or c or d:
+        return True
+    else:
+        return False
+    
+    
 def get_raa(dir_pp, dir_AA):
 
     print('#pp dir: ', dir_pp)
@@ -26,18 +39,24 @@ def get_raa(dir_pp, dir_AA):
     files_AA = glob.glob(os.path.join(dir_AA,'*.txt'))
 
     for fAA in files_AA:
+    
+        filename = fAA.split('/')[-1]
 
-        fpp = os.path.join(dir_pp,fAA.split()[-1])
-        print('--pp file: ', fpp)
+        if file_excluded(filename):
+            continue
+
+        fpp = os.path.join(dir_pp,filename)
+        print('#\n--pp file: ', fpp)
         print('--AA file: ', fAA)
         
         dat_pp = np.loadtxt(fpp, comments='#')
         dat_AA = np.loadtxt(fAA, comments='#')
         
         result = divide(dat_AA, dat_pp)
-        
-        filename = os.path.join(dir_AA,'raa_'+fAA.split()[-1])
-        #np.savetxt(filename,result)
+        #print(result)
+        file_path = os.path.join(dir_AA,'raa_'+filename)
+        print('->generating raa file: ', file_path)
+        np.savetxt(file_path,result)
 
 
 def main():

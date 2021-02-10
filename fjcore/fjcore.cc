@@ -1,4 +1,4 @@
-// fjcore -- extracted from FastJet v3.3.1 (http://fastjet.fr)
+// fjcore -- extracted from FastJet v3.3.4 (http://fastjet.fr)
 //
 // fjcore constitutes a digest of the main FastJet functionality.
 // The files fjcore.hh and fjcore.cc are meant to provide easy access to these 
@@ -54,7 +54,7 @@
 //FJSTARTHEADER
 // $Id$
 //
-// Copyright (c) 2005-2018, Matteo Cacciari, Gavin P. Salam and Gregory Soyez
+// Copyright (c) 2005-2020, Matteo Cacciari, Gavin P. Salam and Gregory Soyez
 //
 //----------------------------------------------------------------------
 // This file is part of FastJet (fjcore).
@@ -1447,12 +1447,9 @@ void ClusterSequence::_initialise_and_run_no_decant () {
       _invR2 = 1.0;
     } else {
       if (_Rparam > pi) {
-	// choose a value that ensures that back-to-back particles will
-	// always recombine 
-	//_R2 = 4.0000000000001;
-	_R2 = 2 * ( 3.0 + cos(_Rparam) );
+        _R2 = 2 * ( 3.0 + cos(_Rparam) );
       } else {
-	_R2    = 2 * ( 1.0 - cos(_Rparam) );
+        _R2    = 2 * ( 1.0 - cos(_Rparam) );
       }
       _invR2 = 1.0/_R2;
     }
@@ -1566,7 +1563,7 @@ void ClusterSequence::print_banner() {
   (*ostr) << "# Please cite EPJC72(2012)1896 [arXiv:1111.6097] if you use this package\n";
   (*ostr) << "# for scientific work and optionally PLB641(2006)57 [hep-ph/0512210].   \n";
   (*ostr) << "#                                                                       \n";
-  (*ostr) << "# FastJet is provided without warranty under the terms of the GNU GPLv2.\n";
+  (*ostr) << "# FastJet is provided without warranty under the GNU GPL v2 or higher.  \n";
   (*ostr) << "# It uses T. Chan's closest pair algorithm, S. Fortune's Voronoi code";
 #ifndef __FJCORE_DROP_CGAL
   (*ostr) << ",\n# CGAL ";
@@ -3722,7 +3719,7 @@ void MinHeap::update(unsigned int loc, double new_value) {
     if (here->minloc == start) {
       here->minloc = here; change_made = true;
     }
-    ValueLoc * child = &(_heap[2*loc+1]);
+    ValueLoc * child = &(_heap[0]) + (2*loc+1);
     if (child < heap_end && child->minloc->value < here->minloc->value ) {
       here->minloc = child->minloc;
       change_made = true;}

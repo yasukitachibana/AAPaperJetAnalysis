@@ -3,10 +3,12 @@
 #include "SetFile.h"
 #include "Particle.h"
 
-
+#include <sys/time.h>
+#include <sys/resource.h>
 
 
 AnalyzeBase::~AnalyzeBase(){
+    delete jetDef;
     std::cout << "-$-Deleting AnalyzeBase"<<std::endl;
 }
 
@@ -23,8 +25,6 @@ void AnalyzeBase::Init()
     SetLargestRapidity();
     
     jetDef = new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
-    
-    
     
     if( subMethod == "negative" || subMethod == "Negative" ||
        subMethod == "negatives" || subMethod == "Negatives" ||
@@ -288,12 +288,31 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
     }
     OneEventAnalysis(particle_list);
     particle_list.clear();
-    //particle_list.shrink_to_fit();
+    particle_list.shrink_to_fit();
     event_num++;
-    if(event_num%20000==0){
-        std::cout << "Event" << event_num <<"..."<< std::flush;
+    if(event_num%100==0){
+
+        std::cout
+        << "Event" << event_num
+        <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
     }
     
+}
+
+long AnalyzeBase::getMemoryUsage()
+{
+  struct rusage usage;
+  // NOTE: Reported in kB on BSD/Linux, bytes in Mac/Darwin
+  // Could try to explicitly catch __linux__ as well
+  float mbsize = 1024;
+#ifdef __MACH__
+  mbsize = 1024 * 1024;
+#endif
+    
+  if(0 == getrusage(RUSAGE_SELF, &usage))
+    return usage.ru_maxrss/mbsize;
+  else
+    return 0;
 }
 
 bool AnalyzeBase::HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array<int, 2>> &i_h ){

@@ -23,6 +23,7 @@ public:
     void Start(double ptHatMin, double ptHatMax);
     void End();
     
+    long getMemoryUsage();
     
 protected:
     

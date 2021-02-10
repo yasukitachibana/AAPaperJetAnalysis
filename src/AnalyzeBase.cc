@@ -54,7 +54,7 @@ void AnalyzeBase::End()
         hist->Print();
     }
     DeleteHist();
-    std::cout<<"[AnalyzeEvents] Refresh ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
+    //std::cout<<"[AnalyzeEvents] Refresh ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
 }
 
 
@@ -284,7 +284,7 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
     
-    if(event_num%5000==0){
+    if(event_num%10==0){
         std::cout
         << "Event" << event_num
         <<" ("<<std::to_string(getMemoryUsage())<<"MB) "<< std::flush;
@@ -419,6 +419,7 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
             fj_inputs.push_back(p->GetPseudoJet());
         }
     }
+    
     
     fjcore::ClusterSequence clustSeq(fj_inputs, *jetDef);
     

@@ -289,13 +289,14 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
     OneEventAnalysis(particle_list);
     particle_list.clear();
     particle_list.shrink_to_fit();
-    event_num++;
+
     if(event_num%100==0){
 
         std::cout
         << "Event" << event_num
         <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
     }
+    event_num++;
     
 }
 

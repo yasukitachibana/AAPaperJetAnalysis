@@ -3,11 +3,11 @@
 #include "SetFile.h"
 
 Histogram::Histogram(std::string histname_in): histname(histname_in){
-    std::cout << "-@-Creating Histogram"<<std::endl;
+    //std::cout << "-@-Creating Histogram"<<std::endl;
 }
 
 Histogram::~Histogram(){
-    std::cout << "-$-Deleting Histogram"<<std::endl;
+    //std::cout << "-$-Deleting Histogram"<<std::endl;
 }
 
 
@@ -17,7 +17,7 @@ std::string Histogram::HistName(){
 
 void Histogram::Init(){
     
-    std::cout << "[Histogram] Initialize "<< histname <<std::endl;
+    //std::cout << "[Histogram] Initialize "<< histname <<std::endl;
     
     nJet = 0.0;
     nEv = 0.0;

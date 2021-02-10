@@ -53,8 +53,9 @@ void AnalyzeEvents::Analyze(){
     
     for(int i_pthat_bin = 0; i_pthat_bin < nPtHatBin; i_pthat_bin++ ){
         
-        std::cout <<  "=========================================================" << std::endl;
-        std::cout << "[AnalyzeEvents] ptHatBin: " << ptHat[i_pthat_bin] << "-" << ptHat[i_pthat_bin+1] << "GeV"  << std::endl;
+        std::cout << "=========================================================" << std::endl;
+        std::cout << "[AnalyzeEvents] ptHatBin: " << ptHat[i_pthat_bin] << "-" << ptHat[i_pthat_bin+1] << "GeV -----"  << std::endl;
+        std::cout << "------------------------------------------" << std::endl
 
         //++++++++++++++++++++++++++++++++++++++++++++++++
         //++++++++++++++++++++++++++++++++++++++++++++++++
@@ -73,9 +74,9 @@ void AnalyzeEvents::Analyze(){
         //++++++++++++++++++++++++++++++++++++++++++++++++
 
         
-        std::cout <<  "=========================================================" << std::endl;
+
     }
-    
+    std::cout <<  "=========================================================" << std::endl;
     std::cout << "[AnalyzeEvents] Done AnalyzeEvents"<<std::endl;
     
 }

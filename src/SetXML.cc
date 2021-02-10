@@ -53,7 +53,7 @@ void SetXML::OpenXMLFile(std::string m_name) {
 tinyxml2::XMLElement *
 SetXML::GetXMLElement(std::initializer_list<const char *> &path) {
     
-    std::cout << "[SetXML] Looking for element: " << path << std::endl;
+    //std::cout << "[SetXML] Looking for element: " << path << std::endl;
     OpenXMLFile();
     
     tinyxml2::XMLElement *currentElement = nullptr;
@@ -76,7 +76,7 @@ SetXML::GetXMLElement(std::initializer_list<const char *> &path) {
     }
     
     if (currentElement) {
-        std::cout << "[SetXML] Found element." << std::endl;
+        //std::cout << "[SetXML] Found element." << std::endl;
     } else {
         std::cout << "[SetXML] Did not find element." << std::endl;
     }

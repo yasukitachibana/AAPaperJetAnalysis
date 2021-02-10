@@ -9,6 +9,7 @@
 
 AnalyzeBase::~AnalyzeBase(){
     delete jetDef;
+    jetDef = nullptr;
     std::cout << "-$-Deleting AnalyzeBase"<<std::endl;
 }
 
@@ -284,10 +285,13 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
     
-    if(event_num%10==0){
+    if(event_num%2500==0){
         std::cout
         << "Event" << event_num
         <<" ("<<std::to_string(getMemoryUsage())<<"MB) "<< std::flush;
+        if(event_num%(2500*5)==0){
+            std::cout<<std::endl;
+        }
     }
     
     for( auto hist: hist_list){

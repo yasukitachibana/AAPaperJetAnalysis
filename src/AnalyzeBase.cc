@@ -222,7 +222,7 @@ std::string AnalyzeBase::RapType(int rap){
 
 void AnalyzeBase::Analyze(std::string input_file_name)
 {
-    std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
+    std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
     //*******************************************************************************************
     //*******************************************************************************************
     std::unique_ptr<LoadFileBase> load_file_ptr;
@@ -275,7 +275,7 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     //**************
     }
     
-    std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE! ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
+    std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE! ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
 
 }
 
@@ -283,26 +283,20 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
-    for( auto hist: hist_list){
-        hist->EventCount();
-    }
-
+    
     if(event_num%5000==0){
         std::cout
-        << "Start Event" << event_num
-        <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
+        << "Event" << event_num
+        <<" ("<<std::to_string(getMemoryUsage())<<"MB) "<< std::flush;
+    }
+    
+    for( auto hist: hist_list){
+        hist->EventCount();
     }
 
     OneEventAnalysis(particle_list);
     particle_list.clear();
     particle_list.shrink_to_fit();
-
-    if(event_num%5000==0){
-        std::cout
-        << "End Event" << event_num
-        <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
-    }
-    
     event_num++;
     
 }

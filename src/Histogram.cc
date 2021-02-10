@@ -98,8 +98,13 @@ void Histogram::LoadHistFromFile(){
         ifs.close();
     }else{
         ifs.close();
+        std::cout << std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
         std::cout << "[Histogram] " << outfile_path << " NOT FOUND" <<std::endl;
-        return;
+        std::cout << "[Histogram] Exit. "<< std::endl;
+        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+        std::cout << std::endl;
+        exit(-1);
     }
     
     std::string str;
@@ -176,18 +181,6 @@ void Histogram::DivideWithError( double norm, double norm_error )
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 void Histogram::Add(TH1D *h){
     Hist->Add(h);
 }
@@ -218,71 +211,3 @@ void Histogram::Add(std::shared_ptr<Histogram> h, double factor){
 
 
 
-
-
-
-//
-//
-//void Histogram::CheckPrintHist(){
-//
-//    int nbins = jsHist->GetNbinsX();
-//    std::cout<<"\nhist\n";
-//    for (int i=1; i<nbins+1; i++){
-//
-//
-//        std::cout
-//        << jsHist->GetBinCenter(i) << " "
-//        << jsHist->GetBinContent(i) << std::endl;
-//
-//    }
-//
-//}
-
-
-
-
-
-//void Histogram::SetSigma(double sigma_in, double sigma_error_in){
-//
-//    sigma = sigma_in;
-//    sigma_error = sigma_error_in;
-//
-//}
-//
-//void Histogram::Out(std::string label, std::string out_dir){
-//
-//    if(N_jet>0){
-//
-//        jsHist->Scale((1.0/N_jet));
-//        std::string filename
-//        = out_dir +"/"+label+"_non_deriv.txt";
-//        Print(filename);
-//
-//        jsHist->Scale(1.0,"width");
-//        filename
-//        = out_dir +"/"+label+"_raw.txt";
-//        Print(filename);
-//
-//        Normalize();
-//        filename
-//        = out_dir +"/"+label+"_normalized.txt";
-//        Print(filename);
-//
-//    }else{
-//        std::cout << " No Jet. End. "<<std::endl;
-//    }
-//
-//
-//}
-//
-//void Histogram::Normalize(){
-//
-//    double norm_error;
-//    double norm
-//    = jsHist->IntegralAndError(1,Nbin,norm_error,"width");
-//    jsHist->Scale((1.0/norm));
-//
-//}
-//
-//
-//

@@ -96,14 +96,7 @@ void LoadJetScapeAscii::LoadSigma(std::string sigma_filename, double &sigma, dou
         ifs.close();
     }else{
         ifs.close();
-        
-        std::cout << std::endl;
-        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
         std::cout << "[LoadJetScapeAscii] " << sigma_filename << " NOT FOUND" <<std::endl;
-        std::cout << "[LoadJetScapeAscii] Exit. "<< std::endl;
-        std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
-        std::cout << std::endl;
-        exit(-1);
         return;
     }
     

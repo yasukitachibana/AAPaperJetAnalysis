@@ -35,9 +35,10 @@ def get_raa(dir_pp, dir_AA):
 
     print('#pp dir: ', dir_pp)
     print('#AA dir: ', dir_AA)
-    
-    files_AA = glob.glob(os.path.join(dir_AA,'*.txt'))
+    search = os.path.join(dir_AA,'*.txt') 
 
+    files_AA = glob.glob(search)
+   
     for fAA in files_AA:
     
         filename = os.path.basename(fAA)

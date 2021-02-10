@@ -26,10 +26,12 @@ def submission(args):
         command = root + '; ' + command
     print( "-\n#command: ", command)
 
-    command = head + ' ' + master_command + ' ' + command + '"'
+    main_command = master_command + ' ' + command + '"'
+    command = head + ' ' + main_command
 
     print("-\n#Submission: ",command)
-    os.system(command)
+    #os.system(command)
+    os.system(main_command)
     print("---\n")
     
 def main():

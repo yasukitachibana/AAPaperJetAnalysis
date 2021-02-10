@@ -81,7 +81,6 @@ private:
     virtual std::string ObservableName();
     std::vector<std::shared_ptr<Histogram>> hist_list;
     
-    fjcore::JetDefinition *jetDef;
     
 
     

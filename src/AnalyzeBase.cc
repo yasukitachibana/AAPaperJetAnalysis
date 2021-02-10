@@ -8,8 +8,6 @@
 
 
 AnalyzeBase::~AnalyzeBase(){
-    delete jetDef;
-    jetDef = nullptr;
     std::cout << "-$-Deleting AnalyzeBase"<<std::endl;
 }
 
@@ -25,7 +23,6 @@ void AnalyzeBase::Init()
     SetJetPtCut();
     SetLargestRapidity();
     
-    jetDef = new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     
     if( subMethod == "negative" || subMethod == "Negative" ||
        subMethod == "negatives" || subMethod == "Negatives" ||
@@ -424,10 +421,14 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
         }
     }
     
+    fjcore::JetDefinition *jetDef =  new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     
     fjcore::ClusterSequence clustSeq(fj_inputs, *jetDef);
     
     std::vector <fjcore::PseudoJet> jets = sorted_by_pt( clustSeq.inclusive_jets( jetPtCut ) );
+    
+    delete jetDef;
+    jetDef = nullptr;
     
     jets = sub_ptr->JetSubtraction(jetR, jets, particle_list);
 

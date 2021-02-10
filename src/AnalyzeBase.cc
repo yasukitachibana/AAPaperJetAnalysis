@@ -290,7 +290,7 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
     particle_list.clear();
     particle_list.shrink_to_fit();
 
-    if(event_num%1000==0){
+    if(event_num%5000==0){
 
         std::cout
         << "Event" << event_num

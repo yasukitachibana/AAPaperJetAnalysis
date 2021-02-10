@@ -30,8 +30,8 @@ def submission(args):
     command = head + ' ' + main_command
 
     print("-\n#Submission: ",command)
-    #os.system(command)
-    os.system(main_command)
+    os.system(command)
+    #os.system(main_command)
     print("---\n")
     
 def main():

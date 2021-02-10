@@ -289,7 +289,7 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
         std::cout
         << "Event" << event_num
         <<" ("<<std::to_string(getMemoryUsage())<<"MB) "<< std::flush;
-        if( ((event_num/2500)+1)%5 )==0){
+        if( ((event_num/2500)+1)%5==0 ){
             std::cout<<std::endl;
         }
     }

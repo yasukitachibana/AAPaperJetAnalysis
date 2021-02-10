@@ -222,7 +222,7 @@ std::string AnalyzeBase::RapType(int rap){
 
 void AnalyzeBase::Analyze(std::string input_file_name)
 {
-    std::cout << "[AnalyzeBase] Analyze " << ObservableName() << std::endl;
+    std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
     //*******************************************************************************************
     //*******************************************************************************************
     std::unique_ptr<LoadFileBase> load_file_ptr;
@@ -275,7 +275,7 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     //**************
     }
     
-    std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE!"<< std::endl;
+    std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE! ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
 
 }
 

@@ -54,7 +54,7 @@ void AnalyzeBase::End()
         hist->Print();
     }
     DeleteHist();
-    
+    std::cout<<"[AnalyzeEvents] Reflesh ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::flush;
 }
 
 

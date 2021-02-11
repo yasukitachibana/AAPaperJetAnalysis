@@ -269,9 +269,26 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     }
     
     if( load_file_ptr->Last() ){
-    //**************
-    EventEndMark( particle_list, event_num );
-    //**************
+        //**************
+        EventEndMark( particle_list, event_num );
+        //**************
+        
+        int i = 0;
+        for( auto p : particle_list){
+            if(i<particle_list.size() - 6){continue;}
+            std::cout
+            << "[Last] PID:" << p->GetPID()
+            << " Stat:"<< p->GetStat()
+            << " Stat:"<< p->GetTag()
+            << " (" << p->e()
+            << ", "<< p->px()
+            << ", "<< p->py()
+            << ", "<< p->pz()
+            << ")"<<std::endl;
+            i++;
+        }
+        
+        
     }
     
     std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE! ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
@@ -287,7 +304,7 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
         for( auto p : particle_list){
             if(i>5){break;}
             std::cout
-            << "PID:" << p->GetPID()
+            << "[STT] PID:" << p->GetPID()
             << " Stat:"<< p->GetStat()
             << " Stat:"<< p->GetTag()
             << " (" << p->e()
@@ -441,29 +458,6 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
         }
     }
 
-
-
-    int i = 0;
-    if(test_tag == 1){
-        test_tag=0;
-        for( auto p : particle_list){
-            if(i>5){break;}
-            std::cout
-            << "PID:" << p->GetPID()
-            << " Stat:"<< p->GetStat()
-            << " Stat:"<< p->GetTag()
-            << " (" << p->e()
-            << ", "<< p->px()
-            << ", "<< p->py()
-            << ", "<< p->pz()
-            << ")"<<std::endl;
-            i++;
-        }
-    }
-
-    
-    
-    
     fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     
     fjcore::ClusterSequence clustSeq(fj_inputs, jetDef);

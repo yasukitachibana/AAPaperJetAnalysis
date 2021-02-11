@@ -282,6 +282,25 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
     
+    int i = 0;
+     if(event_num == 0){
+         for( auto p : particle_list){
+             if(i>5){break;}
+             std::cout
+             << "[STT] "
+             << i
+             << " PID:" << p->GetPID()
+             << " Stat:"<< p->GetStat()
+             << " Stat:"<< p->GetTag()
+             << " (" << p->e()
+             << ", "<< p->px()
+             << ", "<< p->py()
+             << ", "<< p->pz()
+             << ")"<<std::endl;
+             i++;
+         }
+     }
+    
     if(event_num%2500==0){
         std::cout
         << "Event" << event_num

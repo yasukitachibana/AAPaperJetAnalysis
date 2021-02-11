@@ -220,7 +220,7 @@ std::string AnalyzeBase::RapType(int rap){
 
 void AnalyzeBase::Analyze(std::string input_file_name)
 {
-    test_tag = 1;
+
     std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
     //*******************************************************************************************
     //*******************************************************************************************
@@ -269,23 +269,6 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     }
     
     if( load_file_ptr->Last() ){
-        std::cout
-        << "[Last] YES n_particle="<<particle_list.size() << std::endl;
-        int i = 0;
-        for( auto p : particle_list){
-            i++;
-            if(i<particle_list.size() - 6){continue;}
-            std::cout
-            << "[Last] PID:" << p->GetPID()
-            << " Stat:"<< p->GetStat()
-            << " Stat:"<< p->GetTag()
-            << " (" << p->e()
-            << ", "<< p->px()
-            << ", "<< p->py()
-            << ", "<< p->pz()
-            << ")"<<std::endl;
-        }
-
         //**************
         EventEndMark( particle_list, event_num );
         //**************
@@ -298,25 +281,6 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
-
-    int i = 0;
-    if(test_tag == 1){
-        test_tag = 0;
-        for( auto p : particle_list){
-            if(i>5){break;}
-            std::cout
-            << "[STT] PID:" << p->GetPID()
-            << " Stat:"<< p->GetStat()
-            << " Stat:"<< p->GetTag()
-            << " (" << p->e()
-            << ", "<< p->px()
-            << ", "<< p->py()
-            << ", "<< p->pz()
-            << ")"<<std::endl;
-            i++;
-        }
-    }
-
     
     if(event_num%2500==0){
         std::cout

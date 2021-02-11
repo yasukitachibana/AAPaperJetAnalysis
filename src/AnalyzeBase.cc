@@ -282,9 +282,10 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
+    int i = 0;
     if(test_tag == 1){
-        test_tag = 0;
         for( auto p : particle_list){
+            if(i>5){break;}
             std::cout
             << "PID:" << p->GetPID()
             << " Stat:"<< p->GetStat()
@@ -294,6 +295,7 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
             << ", "<< p->py()
             << ", "<< p->pz()
             << ")"<<std::endl;
+            i++;
         }
     }
 
@@ -433,7 +435,6 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
 
     for( auto p : particle_list ){
         if( p->GetStat() >= 0 ){
-            
             fjcore::PseudoJet fj_particle = p->GetPseudoJet();
             fj_inputs.push_back(fj_particle);
             
@@ -442,7 +443,23 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
 
 
 
-    
+    int i = 0;
+    if(test_tag == 1){
+        for( auto p : particle_list){
+            if(i>5){break;}
+            std::cout
+            << "PID:" << p->GetPID()
+            << " Stat:"<< p->GetStat()
+            << " Stat:"<< p->GetTag()
+            << " (" << p->e()
+            << ", "<< p->px()
+            << ", "<< p->py()
+            << ", "<< p->pz()
+            << ")"<<std::endl;
+            i++;
+        }
+    }
+
     
     
     

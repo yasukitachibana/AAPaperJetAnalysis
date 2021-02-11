@@ -25,6 +25,9 @@ std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
 
 void LoadJetScapeAscii::Load(std::string input_filename){
     
+    input_line.clear();
+    input_line.shrink_to_fit();
+    
     std::cout << "[LoadJetScapeAscii] Load: " << input_filename <<std::endl;
 
     std::ifstream ifs;

@@ -14,6 +14,11 @@ LoadJetScapeAscii::~LoadJetScapeAscii(){
 
 std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
     
+    if(test_tag == 1){
+        ShowLine();
+        test_tag == 0;
+    }
+    
     sscanf(input_line.data(),
            "%d %d %d %lf %lf %lf %lf %lf %lf",
            &SN, &PID, &Status, &E, &Px, &Py, &Pz, &Eta, &Phi);

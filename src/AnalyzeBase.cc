@@ -270,9 +270,10 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     
     if( load_file_ptr->Last() ){
         std::cout
-        << "[Last] YES n_particle"<<particle_list.size() << std::endl;
+        << "[Last] YES n_particle="<<particle_list.size() << std::endl;
         int i = 0;
         for( auto p : particle_list){
+            i++;
             if(i<particle_list.size() - 6){continue;}
             std::cout
             << "[Last] PID:" << p->GetPID()
@@ -283,7 +284,6 @@ void AnalyzeBase::Analyze(std::string input_file_name)
             << ", "<< p->py()
             << ", "<< p->pz()
             << ")"<<std::endl;
-            i++;
         }
 
         //**************

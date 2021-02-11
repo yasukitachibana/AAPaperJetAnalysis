@@ -445,7 +445,7 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
             << ", "<< p->px()
             << ", "<< p->py()
             << ", "<< p->pz()
-            << ")";
+            << ")"<<std::endl
         }
     }
 

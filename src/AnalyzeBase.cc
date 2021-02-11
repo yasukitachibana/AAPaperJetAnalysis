@@ -282,6 +282,21 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
+    if(test_tag == 1){
+        test_tag = 0;
+        for( auto p : particle_list){
+            std::cout
+            << "PID:" << p->GetPID()
+            << " Stat:"<< p->GetStat()
+            << " Stat:"<< p->GetTag()
+            << " (" << p->e()
+            << ", "<< p->px()
+            << ", "<< p->py()
+            << ", "<< p->pz()
+            << ")"<<std::endl;
+        }
+    }
+
     
     if(event_num%2500==0){
         std::cout
@@ -432,24 +447,6 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
     
     
     fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
-    
-    
-    
-    if(test_tag == 1){
-        test_tag = 0;
-        for( auto p : particle_list){
-            std::cout
-            << "PID:" << p->GetPID()
-            << " Stat:"<< p->GetStat()
-            << " {" << p->e()
-            << ", "<< p->px()
-            << ", "<< p->py()
-            << ", "<< p->pz()
-            << ")"<<std::endl
-        }
-    }
-
-    
     
     fjcore::ClusterSequence clustSeq(fj_inputs, jetDef);
     

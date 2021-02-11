@@ -301,6 +301,7 @@ void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_
 
     int i = 0;
     if(test_tag == 1){
+        test_tag = 0;
         for( auto p : particle_list){
             if(i>5){break;}
             std::cout

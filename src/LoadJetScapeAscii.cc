@@ -66,8 +66,14 @@ int LoadJetScapeAscii::GetLine(){
 }
 
 int LoadJetScapeAscii::EventEnd(){
-    if( input_line.find("#") != std::string::npos && getLineStart == 1 ){
-        return 1;
+    if( input_line.find("#") != std::string::npos ){
+
+        if(getLineStart == 1){
+            return 1;
+        }else{
+            return 0;
+        }
+
     }else{
         getLineStart = 1;
         return 0;

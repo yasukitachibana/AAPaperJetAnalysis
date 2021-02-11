@@ -14,11 +14,6 @@ LoadJetScapeAscii::~LoadJetScapeAscii(){
 
 std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
     
-    if(test_tag == 1){
-        ShowLine();
-        test_tag = 0;
-    }
-    
     sscanf(input_line.data(),
            "%d %d %d %lf %lf %lf %lf %lf %lf",
            &SN, &PID, &Status, &E, &Px, &Py, &Pz, &Eta, &Phi);
@@ -29,12 +24,7 @@ std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
 }
 
 void LoadJetScapeAscii::Load(std::string input_filename){
-    
-    input_line.clear();
-    input_line.shrink_to_fit();
-    input_str_stream.str("");
-    input_str_stream.clear(std::stringstream::goodbit);
-    
+        
     std::cout << "[LoadJetScapeAscii] Load: " << input_filename <<std::endl;
 
     std::ifstream ifs;
@@ -81,7 +71,7 @@ int LoadJetScapeAscii::EventEnd(){
 
 
 int LoadJetScapeAscii::ValidLine(){
-    if( input_line.find("#") == std::string::npos && ! input_line.empty() ){
+    if( getLineStart == 1 && ! input_line.empty() ){
         return 1;
     }else{
         return 0;

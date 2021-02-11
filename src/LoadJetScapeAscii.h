@@ -22,8 +22,6 @@ public:
 
     
 private:
-    int test_tag=1;
-
 
     std::stringstream input_str_stream;
     std::string input_line;

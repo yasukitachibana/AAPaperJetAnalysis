@@ -51,11 +51,11 @@ void AnalyzeEvents::Analyze(){
     
     std::cout << "[AnalyzeEvents] Start AnalyzeEvents"<<std::endl;
     std::cout << "[AnalyzeEvents] Number of pt-hat Bins: "<< nPtHatBin <<std::endl;
-    std::cout << "[AnalyzeEvents] Bin edges: "<< nPtHatBin <<" ";
+    std::cout << "[AnalyzeEvents] Bin edges: [";
     for(auto pt_hat: ptHat){
-        std::cout << pt_hat << " ";
+        std::cout << int(pt_hat) << " ";
     }
-    std::cout <<std::endl;
+    std::cout << "]" << std::endl;
 
     
     for(int i_pthat_bin = 0; i_pthat_bin < nPtHatBin; i_pthat_bin++ ){

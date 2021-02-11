@@ -16,7 +16,7 @@ std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
     
     sscanf(input_line.data(),
            "%d %d %d %lf %lf %lf %lf %lf %lf",
-           &SN, &PID, &Status, &E,  &Px, &Py, &Pz, &Eta, &Phi);
+           &SN, &PID, &Status, &E, &Px, &Py, &Pz, &Eta, &Phi);
     
     auto particle = std::make_shared<Particle>(PID,Status,0,E,Px,Py,Pz);
 

@@ -220,6 +220,7 @@ std::string AnalyzeBase::RapType(int rap){
 
 void AnalyzeBase::Analyze(std::string input_file_name)
 {
+    test_tag = 1;
     std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
     //*******************************************************************************************
     //*******************************************************************************************
@@ -414,12 +415,46 @@ void AnalyzeBase::OneEventAnalysis(std::vector<std::shared_ptr<Particle>> partic
 std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list ){
     
     std::vector <fjcore::PseudoJet> fj_inputs;
-    
-    for( auto& p : particle_list ){
+
+    for( auto p : particle_list ){
         if( p->GetStat() >= 0 ){
-            fj_inputs.push_back(p->GetPseudoJet());
+            
+            fjcore::PseudoJet fj_particle = p->GetPseudoJet();
+            fj_inputs.push_back(fj_particle);
+            
         }
     }
+
+    
+    if(test == 1){
+        test = 0;
+        i=0;
+        for( auto p : particle_list){
+            if( p->GetStat() >= 0 ){
+                
+                std::cout
+                << "PID:" << p->GetPID()
+                << " Stat:"<< p->GetStat()
+                << " {" << p->e()
+                << ", "<< p->px()
+                << ", "<< p->py()
+                << ", "<< p->pz()
+                << ")"
+                << "-> {" << fj_inputs[i].e()
+                << ", "<< fj_inputs[i].px()
+                << ", "<< fj_inputs[i].py()
+                << ", "<< fj_inputs[i].pz()
+                << "}" << std::endl;
+                i++;
+                
+            }
+        }
+    }
+
+
+    
+    
+    
     
     fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     

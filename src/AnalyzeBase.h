@@ -17,6 +17,8 @@
 class AnalyzeBase{
 public:
     
+    int test_tag;
+    
     virtual ~AnalyzeBase();
     void Init();
     void Analyze(std::string input_file_name);

@@ -81,7 +81,7 @@ int LoadJetScapeAscii::EventEnd(){
 
 
 int LoadJetScapeAscii::ValidLine(){
-    if( ! input_line.empty() ){
+    if( input_line.find("#") == std::string::npos && ! input_line.empty() ){
         return 1;
     }else{
         return 0;

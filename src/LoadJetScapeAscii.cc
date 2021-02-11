@@ -16,7 +16,7 @@ std::shared_ptr<Particle> LoadJetScapeAscii::GetParticle(){
     
     if(test_tag == 1){
         ShowLine();
-        test_tag == 0;
+        test_tag = 0;
     }
     
     sscanf(input_line.data(),

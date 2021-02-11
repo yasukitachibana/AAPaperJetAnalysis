@@ -269,9 +269,6 @@ void AnalyzeBase::Analyze(std::string input_file_name)
     }
     
     if( load_file_ptr->Last() ){
-        //**************
-        EventEndMark( particle_list, event_num );
-        //**************
         std::cout
         << "[Last] YES n_particle"<<particle_list.size() << std::endl;
         int i = 0;
@@ -288,8 +285,10 @@ void AnalyzeBase::Analyze(std::string input_file_name)
             << ")"<<std::endl;
             i++;
         }
-        
-        
+
+        //**************
+        EventEndMark( particle_list, event_num );
+        //**************
     }
     
     std::cout << "\n[AnalyzeBase] Last Event" << event_num <<" -- DONE! ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;

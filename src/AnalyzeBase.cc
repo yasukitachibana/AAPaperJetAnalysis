@@ -445,6 +445,7 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
 
     int i = 0;
     if(test_tag == 1){
+        test_tag=0;
         for( auto p : particle_list){
             if(i>5){break;}
             std::cout

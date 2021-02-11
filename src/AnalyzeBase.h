@@ -46,6 +46,8 @@ protected:
     
 private:
     
+    fjcore::JetDefinition *jetDef;
+    
     virtual void SetObservable(fjcore::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j ){}
     
     void EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num);

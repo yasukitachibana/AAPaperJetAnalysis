@@ -14,6 +14,8 @@ AnalyzeBase::~AnalyzeBase(){
 void AnalyzeBase::Init()
 {
 
+    jetDef = nullptr;
+    
     std::cout
     << "[AnalyzeBase] Intialize "
     << ObservableName()
@@ -36,6 +38,8 @@ void AnalyzeBase::Init()
     
     chMin=0.0001;
     
+    jetDef = new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
+    
 }
 
 void AnalyzeBase::Start(double ptHatMin, double ptHatMax)
@@ -52,6 +56,8 @@ void AnalyzeBase::End()
         hist->Print();
     }
     DeleteHist();
+    delete jetDef;
+    jetDef = nullptr;
     //std::cout<<"[AnalyzeEvents] Refresh ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
 }
 
@@ -441,10 +447,8 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
             
         }
     }
-
-    fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     
-    fjcore::ClusterSequence clustSeq(fj_inputs, jetDef);
+    fjcore::ClusterSequence clustSeq(fj_inputs, *jetDef);
     
     std::vector <fjcore::PseudoJet> jets = sorted_by_pt( clustSeq.inclusive_jets( jetPtCut ) );
     

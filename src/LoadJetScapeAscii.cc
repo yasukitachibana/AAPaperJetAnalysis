@@ -27,6 +27,8 @@ void LoadJetScapeAscii::Load(std::string input_filename){
     
     input_line.clear();
     input_line.shrink_to_fit();
+    input_str_stream.str("");
+    input_str_stream.clear(stringstream::goodbit);
     
     std::cout << "[LoadJetScapeAscii] Load: " << input_filename <<std::endl;
 

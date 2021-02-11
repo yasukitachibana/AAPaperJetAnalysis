@@ -220,7 +220,7 @@ std::string AnalyzeBase::RapType(int rap){
 
 void AnalyzeBase::Analyze(std::string input_file_name)
 {
-    test_tag = 1;
+
     std::cout << "[AnalyzeBase] Analyze " << ObservableName() <<" ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
     //*******************************************************************************************
     //*******************************************************************************************
@@ -282,6 +282,14 @@ void AnalyzeBase::Analyze(std::string input_file_name)
 
 void AnalyzeBase::EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num){
 
+    std::cout
+    << "PID:" << particle_list[0]->GetPID()
+    << " Stat:"<< particle_list[0]->GetStat()
+    << " {" << particle_list[0]->e()
+    << ", "<< particle_list[0]->px()
+    << ", "<< particle_list[0]->py()
+    << ", "<< particle_list[0]->pz()
+    << ")"<<std::endl;
     
     if(event_num%2500==0){
         std::cout
@@ -427,37 +435,6 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
     
     
     fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
-    
-    
-    
-    if(test_tag == 1){
-        test_tag = 0;
-        int i=0;
-        std::cout
-        << "R: " <<jetR<<std::endl;
-        for( auto p : particle_list){
-            if( p->GetStat() >= 0 ){
-                
-                std::cout
-                << "PID:" << p->GetPID()
-                << " Stat:"<< p->GetStat()
-                << " {" << p->e()
-                << ", "<< p->px()
-                << ", "<< p->py()
-                << ", "<< p->pz()
-                << ")"
-                << "-> {" << fj_inputs[i].e()
-                << ", "<< fj_inputs[i].px()
-                << ", "<< fj_inputs[i].py()
-                << ", "<< fj_inputs[i].pz()
-                << "}" << std::endl;
-                i++;
-                
-            }
-        }
-    }
-
-    
     
     fjcore::ClusterSequence clustSeq(fj_inputs, jetDef);
     

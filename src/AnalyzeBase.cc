@@ -424,11 +424,17 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
             
         }
     }
-
     
-    if(test == 1){
-        test = 0;
-        i=0;
+    
+    fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
+    
+    
+    
+    if(test_tag == 1){
+        test_tag = 0;
+        int i=0;
+        std::cout
+        << "R: " <<jetR<<std::endl;
         for( auto p : particle_list){
             if( p->GetStat() >= 0 ){
                 
@@ -451,12 +457,7 @@ std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::
         }
     }
 
-
     
-    
-    
-    
-    fjcore::JetDefinition jetDef =  fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
     
     fjcore::ClusterSequence clustSeq(fj_inputs, jetDef);
     

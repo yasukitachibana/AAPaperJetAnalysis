@@ -8,6 +8,8 @@
 
 
 AnalyzeBase::~AnalyzeBase(){
+    delete jetDef;
+    jetDef = nullptr;
     std::cout << "-$-Deleting AnalyzeBase"<<std::endl;
 }
 
@@ -56,8 +58,6 @@ void AnalyzeBase::End()
         hist->Print();
     }
     DeleteHist();
-    delete jetDef;
-    jetDef = nullptr;
     //std::cout<<"[AnalyzeEvents] Refresh ("<<std::to_string(getMemoryUsage())<<"MB) ..."<< std::endl;
 }
 

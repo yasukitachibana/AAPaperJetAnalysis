@@ -17,8 +17,8 @@
     <jetRapMin><Item>0.0</Item></jetRapMin>
     <jetRapMax><Item>2.1</Item></jetRapMax>
     
-    <jetPtMin><Item>126</Item><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item></jetPtMin>
-    <jetPtMax><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item><Item>398</Item></jetPtMax>
+    <jetPtMin><Item>251</Item><Item>316</Item></jetPtMin>
+    <jetPtMax><Item>316</Item><Item>398</Item></jetPtMax>
 
     <!-- Hadrons -->
     <observable>ffpt</observable>

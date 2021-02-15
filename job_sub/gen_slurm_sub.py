@@ -64,6 +64,9 @@ def main():
     
     args = parser.parse_args()
     
+    if args.p == "ex":
+          args.p = "express -p eamxp"
+    
     if args.xml == "" or args.input == "" or args.output == "":
         exit()
 

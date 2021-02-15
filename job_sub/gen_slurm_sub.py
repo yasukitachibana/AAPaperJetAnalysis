@@ -35,8 +35,13 @@ def Mkdirs(path):
     if not os.path.isdir(path):
         print('creating "'+path+'" directory')
         os.makedirs(path)
-    
-    
+
+def atlas_5tev_ffz(i):
+    return 'atlas_5tev_ffz'+str(i)+'.xml'
+
+def atlas_5tev_ffpt(i):
+    return 'atlas_5tev_ffpt'+str(i)+'.xml'
+
 def main():
 
     import argparse
@@ -68,9 +73,22 @@ def main():
           args.p = "express -p eamxp"
     
     if args.xml == "" or args.input == "" or args.output == "":
+        print ('please specify xml, input directory, and out put directory')
+        print ('python gen_slurm_sub.py --xml [XMLFILENAME] --input [INPUTDIRECTORY] --output [OUTPUTDIRECTORY]')
         exit()
+        
 
-    generate(args)
+
+    if args.xml == 'atlas_5tev_ffz' or '../config/atlas_5tev_ffz' :
+        for i in range(0,3):
+            args.xml = atlas_5tev_ffz(i)
+            generate(args)
+    elif args.xml == 'atlas_5tev_ffpt' or '../config/atlas_5tev_ffpt' :
+        for i in range(0,3):
+            args.xml = atlas_5tev_ffpt(i)
+            generate(args)
+    else:
+        generate(args)
 
 
 

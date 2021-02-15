@@ -14,11 +14,15 @@
     <chJet>0</chJet><!-- 0: full jet, 1: charged jet -->
     
     <jetRapidity>0</jetRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
-    <jetRapMin><Item>0.0</Item><Item>0.0</Item><Item>1.2</Item><Item>0.3</Item><Item>0.8</Item></jetRapMin>
-    <jetRapMax><Item>2.1</Item><Item>0.3</Item><Item>2.1</Item><Item>0.8</Item><Item>1.2</Item></jetRapMax>
+    <jetRapMin><Item>0.0</Item></jetRapMin>
+    <jetRapMax><Item>2.1</Item></jetRapMax>
     
-    <jetPtMin><Item>126</Item><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item></jetPtMin>
-    <jetPtMax><Item>158</Item><Item>200</Item><Item>251</Item><Item>316</Item><Item>398</Item></jetPtMax>
+    <jetPtMin>
+        <Item>126</Item><Item>158</Item><Item>200</Item>
+    </jetPtMin>
+    <jetPtMax>
+        <Item>158</Item><Item>200</Item><Item>251</Item>
+    </jetPtMax>
 
     <!-- Hadrons -->
     <observable>ffz</observable>
@@ -34,19 +38,29 @@
     
     
     <binEdges>
+        <Item>0.00630957</Item>
+        <Item>0.00794328</Item>
+        <Item>0.01</Item>
+        <Item>0.0125893</Item>
+        <Item>0.0158489</Item>
+        <Item>0.0199526</Item>
+        <Item>0.0251189</Item>
+        <Item>0.0316228</Item>
+        <Item>0.0398107</Item>
+        <Item>0.0501187</Item>
+        <Item>0.0630957</Item>
+        <Item>0.0794328</Item>
+        <Item>0.1</Item>
+        <Item>0.125893</Item>
+        <Item>0.158489</Item>
+        <Item>0.199526</Item>
+        <Item>0.251189</Item>
+        <Item>0.316228</Item>
+        <Item>0.398107</Item>
+        <Item>0.501187</Item>
+        <Item>0.630958</Item>
+        <Item>0.794329</Item>
         <Item>1.0</Item>
-        <Item>1.58</Item>
-        <Item>2.51</Item>
-        <Item>3.98</Item>
-        <Item>6.31</Item>
-        <Item>10.0</Item>
-        <Item>15.85</Item>
-        <Item>25.12</Item>
-        <Item>39.81</Item>
-        <Item>63.09</Item>
-        <Item>100.0</Item>
-        <Item>158.49</Item>
-        <Item>251.18</Item>
     </binEdges>
     
 

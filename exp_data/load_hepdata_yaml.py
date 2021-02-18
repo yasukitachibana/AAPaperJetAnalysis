@@ -12,8 +12,9 @@ def generate_output_filename(outputDir, name):
   return os.path.join(outputDir, name+'.txt')
 
 def generate_name(yaml_y_data):
-  name = ''
+
   i = 0
+  name = yaml_y_data['header']['name']
   for  yaml_qual in yaml_y_data['qualifiers']:
     for key in yaml_qual.keys():
       if i==0:

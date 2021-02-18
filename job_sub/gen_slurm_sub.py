@@ -78,6 +78,8 @@ def main():
         exit()
         
 
+    print(args.xml)
+    exit()
 
     if args.xml == 'atlas_5tev_ffz' or '../config/atlas_5tev_ffz' :
         for i in range(0,3):

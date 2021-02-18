@@ -1,4 +1,3 @@
-
 hepdata_atlas_jet_ff_5tev:
   data_save_dir: './hepdata_atlas_jet_ff_5tev'
   data_url: 'https://www.hepdata.net/download/table/ins1673177/Table{}/2/yaml'

@@ -29,7 +29,7 @@ def main():
     
     Mkdirs(dir)
     
-    for i in range(n_first,n_last):
+    for i in range(n_first,n_last+1):
       url = url_temp.format(str(i))
       print('downloading \n>>', url)
       

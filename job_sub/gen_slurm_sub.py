@@ -37,10 +37,10 @@ def Mkdirs(path):
         os.makedirs(path)
 
 def atlas_5tev_ffz(i):
-    return 'atlas_5tev_ffz'+str(i)+'.xml'
+    return '../config/atlas_5tev_ffz'+str(i)+'.xml'
 
 def atlas_5tev_ffpt(i):
-    return 'atlas_5tev_ffpt'+str(i)+'.xml'
+    return '../config/atlas_5tev_ffpt'+str(i)+'.xml'
 
 def main():
 

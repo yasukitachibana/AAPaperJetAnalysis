@@ -3,6 +3,7 @@
 
 
 #include "Histogram.h"
+#include "Hist1D.h"
 #include <iostream>
 #include <vector>
 

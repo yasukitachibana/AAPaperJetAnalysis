@@ -4,6 +4,7 @@ JetAnalysis.cc
 SetXML.cc
 SetFile.cc
 Histogram.cc
+Hist1D.cc
 AnalyzeEvents.cc
 CombineEvents.cc
 LoadFileBase.cc

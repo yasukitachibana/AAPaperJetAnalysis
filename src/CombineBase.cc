@@ -4,6 +4,7 @@
 #include "LoadFileBase.h"
 #include "LoadJetScapeAscii.h"
 
+
 CombineBase::~CombineBase(){
     std::cout << "-$-Deleting CombineBase"<<std::endl;
 }
@@ -71,7 +72,7 @@ void CombineBase::Combine(){
 
 void CombineBase::DeleteHist(){
     for( auto hist: hist_list ){
-        hist->DeleteTH1D();
+        hist->DeleteTH();
     }
     hist_list.clear();
     hist_list.shrink_to_fit();
@@ -112,7 +113,7 @@ void CombineBase::LoadHist( double jpmin, double jpmax,
                                          hrmin, hrmax);
         
         std::cout << "[CombineBase] Load Histogram: " << hist_name << std::endl;
-        auto hist_this_bin = std::make_shared<Histogram>(hist_name);
+        auto hist_this_bin = std::make_shared<Hist1D>(hist_name);
         hist_this_bin->Init();
         hist_this_bin->LoadHistFromFile();
         

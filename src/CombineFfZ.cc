@@ -11,7 +11,7 @@ CombineFfZ::~CombineFfZ(){
 
 void CombineFfZ::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
-    Histogram total_hist(total_hist_name);
+    Hist1D total_hist(total_hist_name);
     total_hist.Init();
 
     
@@ -35,6 +35,6 @@ void CombineFfZ::GetTotalHist(std::string total_hist_name, double delta_rapidity
         std::cout << "[CombineFfZ] Skip. "<< std::endl;
     }
     
-    total_hist.DeleteTH1D();
+    total_hist.DeleteTH();
     
 }

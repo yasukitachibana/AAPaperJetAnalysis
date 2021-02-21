@@ -11,7 +11,7 @@ CombineFfPt::~CombineFfPt(){
 
 void CombineFfPt::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
-    Histogram total_hist(total_hist_name);
+    Hist1D total_hist(total_hist_name);
     total_hist.Init();
 
     
@@ -35,6 +35,6 @@ void CombineFfPt::GetTotalHist(std::string total_hist_name, double delta_rapidit
         std::cout << "[CombineFfPt] Skip. "<< std::endl;
     }
     
-    total_hist.DeleteTH1D();
+    total_hist.DeleteTH();
     
 }

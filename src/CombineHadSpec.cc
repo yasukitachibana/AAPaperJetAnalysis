@@ -11,7 +11,7 @@ CombineHadSpec::~CombineHadSpec(){
 
 void CombineHadSpec::GetTotalHist(std::string total_hist_name, double delta_rapidity){
     
-    Histogram total_hist(total_hist_name);
+    Hist1D total_hist(total_hist_name);
     total_hist.Init();
     
     
@@ -34,6 +34,6 @@ void CombineHadSpec::GetTotalHist(std::string total_hist_name, double delta_rapi
     total_hist.Scale(1.0/delta_rapidity);
     total_hist.Print("hadspec_dNdptdrap_");
     
-    total_hist.DeleteTH1D();
+    total_hist.DeleteTH();
     
 }

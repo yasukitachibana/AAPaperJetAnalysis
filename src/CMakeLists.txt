@@ -13,6 +13,7 @@ SubtractionBase.cc
 SubNegatives.cc
 AnalyzeBase.cc
 JetShape.cc
+JetShapeSub.cc
 JetSpec.cc
 HadSpec.cc
 FfPt.cc

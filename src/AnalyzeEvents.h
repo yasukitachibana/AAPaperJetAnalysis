@@ -5,6 +5,7 @@
 #include "JetSpec.h"
 #include "HadSpec.h"
 #include "JetShape.h"
+#include "JetShapeSub.h"
 #include "FfPt.h"
 #include "FfZ.h"
 #include <iostream>

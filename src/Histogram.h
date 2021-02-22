@@ -10,7 +10,7 @@
 #include <iomanip>
 #include "SetXML.h"
 #include "SetFile.h"
-
+#include <memory>
 
 
 

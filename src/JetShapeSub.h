@@ -1,20 +1,21 @@
-#ifndef JETSHAPE_H_
-#define JETSHAPE_H_
+#ifndef JETSHAPESUB_H_
+#define JETSHAPESUB_H_
 #include "AnalyzeBase.h"
 #include "SubtractionBase.h"
 
 #include <iostream>
 
-class JetShape: public AnalyzeBase {
+class JetShapeSub: public AnalyzeBase {
 public:
-  JetShape();
-  ~JetShape();
+  JetShapeSub();
+  ~JetShapeSub();
   
 private:
   std::string ObservableName();
+  void GenerateHist(double ptHatMin, double ptHatMax);
   void SetObservable(fjcore::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j );
+    
+    
+  };
   
-  
-};
-
 #endif 

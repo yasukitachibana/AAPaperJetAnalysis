@@ -2,6 +2,7 @@
 #include "CombineJetSpec.h"
 #include "CombineHadSpec.h"
 #include "CombineJetShape.h"
+#include "CombineJetShapeSub.h"
 #include "CombineFfPt.h"
 #include "CombineFfZ.h"
 
@@ -27,7 +28,10 @@ void CombineEvents::Init(){
     }else if( observable == "jetshape") {
         std::cout << "[CombineEvents] Combine jet shape" << std::endl;
         combine_ptr = std::unique_ptr<CombineJetShape> (new CombineJetShape());
-    }else if( observable == "ffpt") {
+    }else if( observable == "jetshapesub") {
+      std::cout << "[CombineEvents] Combine jet shape w/ subtraction" << std::endl;
+      combine_ptr = std::unique_ptr<CombineJetShapeSub> (new CombineJetShapeSub());
+  }else if( observable == "ffpt") {
         std::cout << "[CombineEvents] Combine fragmentation function (pt)" << std::endl;
         combine_ptr = std::unique_ptr<CombineFfPt> (new CombineFfPt());
     }else if( observable == "ffz") {

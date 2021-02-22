@@ -22,8 +22,12 @@ void Hist1D::InitHist(){
 
 }
 
-void Hist1D::Fill(double x, double y){
-  Hist->Fill( x, y );
+void Hist1D::Fill(double x){
+  Hist->Fill( x );
+}
+
+void Hist1D::Fill(double x, double val){
+  Hist->Fill( x, val );
 }
 
 void Hist1D::Print(std::string name, bool addHistname /* = true */ ){
@@ -162,10 +166,30 @@ void Hist1D::Add(TH1D *h, double factor){
 }
 
 void Hist1D::Add(std::shared_ptr<Histogram> h){
-  Add(std::dynamic_pointer_cast<Hist1D>(h)->GetTH1D());
+  Add(std::dynamic_pointer_cast<Hist1D>(h));
 }
 
 void Hist1D::Add(std::shared_ptr<Histogram> h, double factor){
-  Add(std::dynamic_pointer_cast<Hist1D>(h)->GetTH1D(), factor);
+  Add(std::dynamic_pointer_cast<Hist1D>(h), factor);
 }
 
+void Hist1D::Add(std::shared_ptr<Hist1D> h){
+  Add(h->GetTH1D());
+}
+
+void Hist1D::Add(std::shared_ptr<Hist1D> h, double factor){
+  Add(h->GetTH1D(), factor);
+}
+
+void Hist1D::SetErrors(Hist1D h_err2){
+  
+  int nbins = Hist->GetNbinsX();
+  
+  for (int i=1; i<nbins+1; i++){
+
+    double err2 = h_err2.GetTH1D()->GetBinError(i);
+    Hist->SetBinError(i, sqrt(err2));
+    
+  }
+
+}

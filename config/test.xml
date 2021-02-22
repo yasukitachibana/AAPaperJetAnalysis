@@ -21,7 +21,7 @@
     <jetPtMax><Item>5020</Item></jetPtMax>
 
     <!-- Hadrons -->
-    <observable>jetshapesub</observable>
+    <observable>jetspec</observable>
     
     <chHadron>0</chHadron><!-- 0: hadrons, 1: charged hadrons -->
     

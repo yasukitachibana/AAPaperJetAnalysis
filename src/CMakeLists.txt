@@ -5,6 +5,7 @@ SetXML.cc
 SetFile.cc
 Histogram.cc
 Hist1D.cc
+Hist2D.cc
 AnalyzeEvents.cc
 CombineEvents.cc
 LoadFileBase.cc
@@ -20,6 +21,7 @@ FfPt.cc
 FfZ.cc
 CombineBase.cc
 CombineJetShape.cc
+CombineJetShapeSub.cc
 CombineHadSpec.cc
 CombineJetSpec.cc
 CombineFfPt.cc

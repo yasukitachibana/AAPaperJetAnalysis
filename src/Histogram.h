@@ -20,9 +20,10 @@ public:
   virtual ~Histogram();
 
   void Init();
-  
-  virtual void Fill( double x, double y){}
-  virtual void Fill( double x1, double x2, double y){}
+
+  virtual void Fill( double ){}
+  virtual void Fill( double, double ){}
+  virtual void Fill( double, double, double ){}
 
   void Print();
   virtual void Print(std::string name, bool addHistname = true){}

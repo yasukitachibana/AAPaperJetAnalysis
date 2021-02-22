@@ -187,7 +187,7 @@ void Hist1D::SetErrors(Hist1D h_err2){
   
   for (int i=1; i<nbins+1; i++){
 
-    double err2 = h_err2.GetTH1D()->GetBinError(i);
+    double err2 = h_err2.GetTH1D()->GetBinContent(i);
     Hist->SetBinError(i, sqrt(err2));
     
   }

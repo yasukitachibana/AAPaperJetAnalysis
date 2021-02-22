@@ -64,13 +64,13 @@
       <Item>2.5</Item>
     </sidebandRap>
     
-    <nBinX>314</nBinX>
+    <nBinX>628</nBinX>
     <boundX>
       <Item>-3.141592653589793238462643383279502884197</Item>
       <Item>3.141592653589793238462643383279502884197</Item>
     </boundX>
     
-    <nBinY>300</nBinY>
+    <nBinY>600</nBinY>
     <boundY>
       <Item>-3.0</Item>
       <Item>3.0</Item>

@@ -24,8 +24,9 @@ def file_excluded(filename):
     b = filename.startswith('CMake')
     c = filename.startswith('hist')
     d = filename.startswith('count')
-
-    if a or b or c or d:
+    e = filename.startswith('sideband')
+    
+    if a or b or c or d or e:
         return True
     else:
         return False

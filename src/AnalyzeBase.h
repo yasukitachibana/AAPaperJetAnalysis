@@ -80,7 +80,7 @@ private:
   double GetRapidity( std::shared_ptr<Particle> p );
   double GetRapidity( fjcore::PseudoJet j );
   
-  
+  bool StatCheck(std::shared_ptr<Particle> p);
   
 
   
@@ -111,6 +111,8 @@ private:
   
   double chMin;
   Pythia8::Pythia pythia;
+  
+  std::vector<int> statHad;
   
   
   

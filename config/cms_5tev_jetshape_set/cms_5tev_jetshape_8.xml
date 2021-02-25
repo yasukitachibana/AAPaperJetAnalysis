@@ -39,6 +39,10 @@
     </hadronPtMax>
     
     
+    <statHadron>
+      <Item>0</Item><Item>1</Item><Item>-1</Item>
+    </statHadron>
+    
     <binEdges>
         <Item>0</Item>
         <Item>0.05</Item>

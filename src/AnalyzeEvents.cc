@@ -1,6 +1,7 @@
 #include "AnalyzeEvents.h"
 #include "SetXML.h"
 #include "SetFile.h"
+//#include "FactoryBase.h"
 
 AnalyzeEvents::AnalyzeEvents(){
   std::cout << "-@-Creating AnalyzeEvents"<<std::endl;
@@ -11,6 +12,8 @@ AnalyzeEvents::~AnalyzeEvents(){
   std::cout << "-$-Deleting AnalyzeEvents"<<std::endl;
 }
 
+
+
 void AnalyzeEvents::Init(){
   std::cout << "[AnalyzeEvents] Intialize AnalyzeEvents"<<std::endl;
   
@@ -18,36 +21,9 @@ void AnalyzeEvents::Init(){
   nPtHatBin = ptHat.size()-1;
   observable = SetXML::Instance()->GetElementText({"observable"});
   
-  
-  if( observable == "hadspec") {
-    std::cout << "[AnalyzeEvents] particle spectrum analysis" << std::endl;
-    analyze_ptr = std::unique_ptr<HadSpec> (new HadSpec());
-  }else if( observable == "jetspec") {
-    std::cout << "[AnalyzeEvents] jet spectrum analysis" << std::endl;
-    analyze_ptr = std::unique_ptr<JetSpec> (new JetSpec());
-  }else if( observable == "jetshape") {
-    std::cout << "[AnalyzeEvents] jet shape analysis" << std::endl;
-    analyze_ptr = std::unique_ptr<JetShape> (new JetShape());
-  }else if( observable == "jetshapesub") {
-    std::cout << "[AnalyzeEvents] jet shape analysis (w/ subtraction)" << std::endl;
-    analyze_ptr = std::unique_ptr<JetShapeSub> (new JetShapeSub());
-  }else if( observable == "ffpt") {
-    std::cout << "[AnalyzeEvents] fragmentation function (pt) analysis" << std::endl;
-    analyze_ptr = std::unique_ptr<FfPt> (new FfPt());
-  }else if( observable == "ffz") {
-    std::cout << "[AnalyzeEvents] fragmentation function (z) analysis" << std::endl;
-    analyze_ptr = std::unique_ptr<FfZ> (new FfZ());
-  }else{
-    std::cout << std::endl;
-    std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
-    std::cout << "[AnalyzeEvents] Observable: " << observable << " is not suported" << std::endl;
-    std::cout << "[AnalyzeEvents] Exit. "<< std::endl;
-    std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
-    std::cout << std::endl;
-    exit(-1);
-  }
-  
+  CreateAnalyze( observable );
   analyze_ptr->Init();
+  
 }
 
 void AnalyzeEvents::Analyze(){
@@ -89,4 +65,36 @@ void AnalyzeEvents::Analyze(){
   std::cout <<  "=========================================================" << std::endl;
   std::cout << "[AnalyzeEvents] Done AnalyzeEvents"<<std::endl;
   
+}
+
+
+
+void AnalyzeEvents::CreateAnalyze( std::string observable ){
+  if( observable == "hadspec") {
+    std::cout << "[AnalyzeEvents] particle spectrum analysis" << std::endl;
+    analyze_ptr = std::unique_ptr<HadSpec> (new HadSpec());
+  }else if( observable == "jetspec") {
+    std::cout << "[AnalyzeEvents] jet spectrum analysis" << std::endl;
+    analyze_ptr = std::unique_ptr<JetSpec> (new JetSpec());
+  }else if( observable == "jetshape") {
+    std::cout << "[AnalyzeEvents] jet shape analysis" << std::endl;
+    analyze_ptr = std::unique_ptr<JetShape> (new JetShape());
+  }else if( observable == "jetshapesub") {
+    std::cout << "[AnalyzeEvents] jet shape analysis (w/ subtraction)" << std::endl;
+    analyze_ptr = std::unique_ptr<JetShapeSub> (new JetShapeSub());
+  }else if( observable == "ffpt") {
+    std::cout << "[AnalyzeEvents] fragmentation function (pt) analysis" << std::endl;
+    analyze_ptr = std::unique_ptr<FfPt> (new FfPt());
+  }else if( observable == "ffz") {
+    std::cout << "[AnalyzeEvents] fragmentation function (z) analysis" << std::endl;
+    analyze_ptr = std::unique_ptr<FfZ> (new FfZ());
+  }else{
+    std::cout << std::endl;
+    std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+    std::cout << "[AnalyzeEvents] Observable: " << observable << " is not suported" << std::endl;
+    std::cout << "[AnalyzeEvents] Exit. "<< std::endl;
+    std::cout << "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
+    std::cout << std::endl;
+    exit(-1);
+  }
 }

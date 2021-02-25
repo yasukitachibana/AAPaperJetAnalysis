@@ -145,6 +145,7 @@ void AnalyzeBase::InitSettings(){
   hadRapMax = SetXML::Instance()->GetElementVectorDouble({"hadronRapMax","Item"});
   hadPtMin = SetXML::Instance()->GetElementVectorDouble({"hadronPtMin","Item"});
   hadPtMax = SetXML::Instance()->GetElementVectorDouble({"hadronPtMax","Item"});
+  statHad = SetXML::Instance()->GetElementVectorInt({"statHadron","Item"});
   
   subMethod = SetXML::Instance()->GetElementText({"subtractionMethod"});
   inputStyle = SetXML::Instance()->GetElementText({"inputStyle"});
@@ -348,10 +349,27 @@ long AnalyzeBase::getMemoryUsage()
     return 0;
 }
 
+
+bool AnalyzeBase::StatCheck(std::shared_ptr<Particle> p){
+  
+  for(auto st:statHad){
+    if( st==p->GetStat() ){
+      return true;
+    }
+  }
+  
+  return false;
+  
+}
+
 bool AnalyzeBase::HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array<int, 2>> &i_h ){
   
   bool trigger = false;
   
+  if(!StatCheck(p)){
+    return trigger;
+  }
+
   if( chHad == 1 && fabs(pythia.particleData.charge( p->GetPID() )) < chMin )
   {
     return trigger;

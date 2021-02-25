@@ -10,7 +10,6 @@
 
 AnalyzeBase::~AnalyzeBase(){
   delete jetDef;
-  jetDef = nullptr;
   std::cout << "-$-Deleting AnalyzeBase"<<std::endl;
 }
 

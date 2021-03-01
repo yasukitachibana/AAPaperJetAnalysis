@@ -23,7 +23,7 @@
   <!-- Hadrons -->
   <observable>jetshapesub</observable>
   
-  <chHadron>1</chHadron><!-- 0: hadrons, 1: charged hadrons -->
+  <chHadron>0</chHadron><!-- FULL[0]: hadrons, 1: charged hadrons --> 
   
   <hadronRapidity>1</hadronRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
   <hadronRapMin><Item>0.0</Item><Item>0.0</Item></hadronRapMin>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
-<!--CMS Jet Shape-->
-<!--https://www.hepdata.net/record/ins1658057-->
-<!--Table 11-->
+<!--ATLAS Jet Spec-->
+<!--[https://www.hepdata.net/record/ins1658057]-->
+
 
 <jetanalysis>
   
@@ -15,28 +15,22 @@
   
   <jetRapidity>1</jetRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
   <jetRapMin><Item>0</Item></jetRapMin>
-  <jetRapMax><Item>1.6</Item></jetRapMax>
+  <jetRapMax><Item>2.8</Item></jetRapMax>
   
-  <jetPtMin><Item>120</Item></jetPtMin>
-  <jetPtMax><Item>5020</Item></jetPtMax>
+  <jetPtMin><Item>40</Item></jetPtMin>
+  <jetPtMax><Item>1000</Item></jetPtMax>
   
   <!-- Hadrons -->
-  <observable>jetshapesub</observable>
+  <observable>jetspec</observable>
   
-  <chHadron>1</chHadron><!-- 0: hadrons, 1: charged hadrons -->
+  <chHadron>0</chHadron><!-- 0: hadrons, 1: charged hadrons -->
   
   <hadronRapidity>1</hadronRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
   <hadronRapMin><Item>0</Item></hadronRapMin>
-  <hadronRapMax><Item>4.5</Item></hadronRapMax>
+  <hadronRapMax><Item>2.4</Item></hadronRapMax>
   
-  <hadronPtMin>
-    <Item>0.7</Item><Item>2.0</Item><Item>4.0</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item><Item>0.7</Item> <Item>0.7</Item>
-    <Item>0.7</Item> <Item>0.7</Item>
-  </hadronPtMin>
-  <hadronPtMax>
-    <Item>300</Item><Item>300</Item><Item>300</Item><Item>1.0</Item><Item>2.0</Item><Item>3.0</Item><Item>4.0</Item><Item>8.0</Item><Item>12.0</Item>
-    <Item>16.0</Item><Item>20.0</Item>
-  </hadronPtMax>
+  <hadronPtMin><Item>0.0</Item></hadronPtMin>
+  <hadronPtMax><Item>1000</Item></hadronPtMax>
   
   <statHadron>
     <Item>0</Item><Item>1</Item><Item>-1</Item>
@@ -60,24 +54,6 @@
     <Item>1.0</Item>
   </binEdges>
   
-  <binType>fix</binType>
-  
-  <sidebandRap>
-    <Item>1.5</Item>
-    <Item>2.5</Item>
-  </sidebandRap>
-  
-  <nBinX>628</nBinX>
-  <boundX>
-    <Item>-3.141592653589793238462643383279502884197</Item>
-    <Item>3.141592653589793238462643383279502884197</Item>
-  </boundX>
-  
-  <nBinY>600</nBinY>
-  <boundY>
-    <Item>-3.0</Item>
-    <Item>3.0</Item>
-  </boundY>
   
   <!-- ptHatBins -->
   <ptHat>

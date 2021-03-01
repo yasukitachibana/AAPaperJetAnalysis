@@ -26,20 +26,19 @@
   <chHadron>1</chHadron><!-- 0: hadrons, 1: charged hadrons -->
   
   <hadronRapidity>1</hadronRapidity><!-- 0: rapidity(Y), 1: pseudorapidity(Eta) -->
-  <hadronRapMin><Item>0</Item></hadronRapMin>
-  <hadronRapMax><Item>4.5</Item></hadronRapMax>
+  <hadronRapMin><Item>0.0</Item><Item>0.0</Item></hadronRapMin>
+  <hadronRapMax><Item>4.6</Item><Item>2.4</Item></hadronRapMax>
   
   <hadronPtMin>
-    <Item>0.0</Item>
+    <Item>0.7</Item><Item>2.0</Item><Item>4.0</Item><Item>0.7</Item><Item>1.0</Item><Item>2.0</Item><Item>3.0</Item><Item>4.0</Item> <Item>8.0</Item><Item>12.0</Item><Item>16.0</Item>
   </hadronPtMin>
   <hadronPtMax>
-    <Item>300</Item>
+    <Item>300</Item><Item>300</Item><Item>300</Item><Item>1.0</Item><Item>2.0</Item><Item>3.0</Item><Item>4.0</Item><Item>8.0</Item><Item>12.0</Item><Item>16.0</Item><Item>20.0</Item>
   </hadronPtMax>
   
   <statHadron>
     <Item>0</Item><Item>1</Item><Item>-1</Item>
   </statHadron>
-  
   
   <binEdges>
     <Item>0</Item>
@@ -57,6 +56,13 @@
     <Item>0.7</Item>
     <Item>0.8</Item>
     <Item>1.0</Item>
+    <Item>1.2</Item>
+    <Item>1.4</Item>
+    <Item>1.6</Item>
+    <Item>1.8</Item>
+    <Item>2.0</Item>
+    <Item>2.5</Item>
+    <Item>3.0</Item>
   </binEdges>
   
   <binType>fix</binType>

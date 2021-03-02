@@ -38,7 +38,7 @@
   
   <statHadron>
 <!--    <Item>0</Item><Item>1</Item><-->
-      Item>-1</Item>
+      <Item>-1</Item>
   </statHadron>
   
   <binEdges>

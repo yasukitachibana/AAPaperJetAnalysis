@@ -274,15 +274,18 @@ void Hist2D::SetSidebandHist(TH2D *h, double min, double max){
     }
   }
   
-  for (int ix=1; ix<nbins_x+1; ix++){
-    for (int iy=1; iy<nbins_y+1; iy++){
-      
-      double val = SideVal->GetBinContent(ix);
-      double err2 = SideErr2->GetBinError(ix);
-
-      Hist->SetBinContent(ix,iy,val/ny_in);
-      Hist->SetBinError(ix,iy,sqrt(err2)/ny_in);
-      
+  
+  if(ny_in !=0){
+    for (int ix=1; ix<nbins_x+1; ix++){
+      for (int iy=1; iy<nbins_y+1; iy++){
+        
+        double val = SideVal->GetBinContent(ix);
+        double err2 = SideErr2->GetBinError(ix);
+        
+        Hist->SetBinContent(ix,iy,val/ny_in);
+        Hist->SetBinError(ix,iy,sqrt(err2)/ny_in);
+        
+      }
     }
   }
   

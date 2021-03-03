@@ -43,12 +43,16 @@ def get_raa(dir_pp, dir_AA):
   for fAA in files_AA:
 
     filename = os.path.basename(fAA)
+    fpp = os.path.join(dir_pp,filename)
+    
     if file_excluded(filename):
       if filename.startswith('hist'):
         os.remove(fAA)
+        if os.path.isfile(fpp):
+          os.remove(fpp)
       continue
         
-    fpp = os.path.join(dir_pp,filename)
+
     print('#\n--pp file: ', fpp)
     print('--AA file: ', fAA)
         

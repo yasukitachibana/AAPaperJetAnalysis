@@ -38,7 +38,7 @@ void AnalyzeBase::Init()
     sub_ptr = std::unique_ptr<SubtractionBase> (new SubtractionBase());
   }
   
-  chMin=0.0001;
+
   
   jetDef = new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
   
@@ -268,11 +268,10 @@ void AnalyzeBase::Analyze(std::string input_file_name)
       
     }else if( load_file_ptr->ValidLine() ){
       
-      auto particle = load_file_ptr->GetParticle();
-      if( RapidityCut(particle) &&
-         ( chJet == 0 || fabs(pythia.particleData.charge( particle->GetPID() )) > chMin ) )
+      auto p = load_file_ptr->GetParticle();
+      if( RapidityCut(p) && ChargeTrigger(p, chJet) && (!NeutrinoCheck(p)) )
       {
-        particle_list.push_back(particle);
+        particle_list.push_back(p);
       }
       
     }
@@ -361,23 +360,48 @@ bool AnalyzeBase::StatCheck(std::shared_ptr<Particle> p){
   
 }
 
-bool AnalyzeBase::HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array<int, 2>> &i_h ){
+bool AnalyzeBase::ChargedCheck(std::shared_ptr<Particle> p){
   
-  bool trigger = false;
+  double charge = pythia.particleData.charge( p->GetPID() );
   
-  if(!StatCheck(p)){
-    return trigger;
+  if( fabs( charge ) > 0.0001 /* min. value of charge */  ){
+    return true;
+  }else{
+    return false;
   }
 
-  if( chHad == 1 && fabs(pythia.particleData.charge( p->GetPID() )) < chMin )
-  {
-    return trigger;
-  }
+}
+
+bool AnalyzeBase::NeutrinoCheck( std::shared_ptr<Particle> p ){
   
+  int pid = p->GetPID();
+
+  for(int i =0; i < nNeutrino; i++){
+    if( abs(pid) == pidNeutrino[i] ){
+      return true;      
+    }
+  }
+    
+  return false;
+  
+}
+
+bool AnalyzeBase::ChargeTrigger(std::shared_ptr<Particle> p, int charged){
+  if( charged==0 || ChargedCheck(p) ){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+bool AnalyzeBase::HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array<int, 2>> &i_h ){
+  
+  if( !StatCheck(p) ){ return false; }
+  if( !ChargeTrigger(p,chHad) ){ return false; }
+  
+  bool trigger = false;
   double pt = p->perp();
   double rapidity = GetRapidity(p);
-  
-  
   
   for( int i_had_pt = 0; i_had_pt < hadPtMin.size(); i_had_pt++ ){
     for( int i_had_rap = 0; i_had_rap < hadRapMin.size(); i_had_rap++ ){

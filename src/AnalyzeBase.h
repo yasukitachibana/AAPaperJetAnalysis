@@ -79,10 +79,12 @@ private:
   
   double GetRapidity( std::shared_ptr<Particle> p );
   double GetRapidity( fjcore::PseudoJet j );
-  
-  bool StatCheck(std::shared_ptr<Particle> p);
-  
 
+
+  bool StatCheck(std::shared_ptr<Particle> p);
+  bool ChargedCheck(std::shared_ptr<Particle> p);// charged: true, neutral: false
+  bool NeutrinoCheck(std::shared_ptr<Particle> p);// neutral: true, other particles: false
+  bool ChargeTrigger(std::shared_ptr<Particle> p, int charged);
   
   std::string JetType(int chJet);
   std::string HadronType(int chHad);
@@ -90,8 +92,8 @@ private:
   
   virtual std::string ObservableName();
 
-  
-  
+  const int nNeutrino = 4;
+  std::array<int, 4> pidNeutrino{12, 14, 16, 13};//abosolute values of neutrino/anti-neutrino pids.
   
   
   
@@ -109,9 +111,7 @@ private:
   std::string inputStyle;
   std::string subMethod;
   
-  double chMin;
   Pythia8::Pythia pythia;
-  
   std::vector<int> statHad;
   
   

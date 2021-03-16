@@ -36,6 +36,13 @@ if (${PYTHIA8_FOUND})
   Message(STATUS "Pythia8 Include dir : " ${PYTHIA8_INCLUDE_DIR})
 endif()
 
+#message("Looking for FastJet ...")
+#find_package(FASTJET)
+#if (${FASTJET_FOUND})
+#  include_directories(${FASTJET_INCLUDE_DIR})
+#  Message(STATUS "FastJet Include dir : " ${FASTJET_INCLUDE_DIR})
+#endif()
+
 
 add_subdirectory(fjcore)
 add_subdirectory(tinyxml2)

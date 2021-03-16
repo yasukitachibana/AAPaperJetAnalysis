@@ -70,6 +70,7 @@ void AnalyzeEvents::Analyze(){
 
 
 void AnalyzeEvents::CreateAnalyze( std::string observable ){
+  
   if( observable == "hadspec") {
     std::cout << "[AnalyzeEvents] particle spectrum analysis" << std::endl;
     analyze_ptr = std::unique_ptr<HadSpec> (new HadSpec());
@@ -97,4 +98,5 @@ void AnalyzeEvents::CreateAnalyze( std::string observable ){
     std::cout << std::endl;
     exit(-1);
   }
+  
 }

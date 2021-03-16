@@ -92,8 +92,8 @@ private:
   
   virtual std::string ObservableName();
 
-  const int nNeutrino = 4;
-  std::array<int, 4> pidNeutrino{12, 14, 16, 13};//abosolute values of neutrino/anti-neutrino pids.
+  static const int nNeutrino = 4;
+  std::array<int, nNeutrino> pidNeutrino{12, 14, 16, 13};//abosolute values of neutrino/anti-neutrino pids.
   
   
   

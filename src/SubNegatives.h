@@ -9,8 +9,8 @@ public:
     SubNegatives();
     ~SubNegatives();
     
-    std::vector <fjcore::PseudoJet>
-    JetSubtraction(double jetR, std::vector <fjcore::PseudoJet> jets,
+    std::vector <fastjet::PseudoJet>
+    JetSubtraction(double jetR, std::vector <fastjet::PseudoJet> jets,
                    std::vector<std::shared_ptr<Particle>> particle_list );
     
     double ptSubtraction( std::shared_ptr<Particle> particle );

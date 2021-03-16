@@ -13,7 +13,7 @@ public:
 private:
   std::string ObservableName();
   void GenerateHist(double ptHatMin, double ptHatMax);
-  void SetObservable(fjcore::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j );
+  void SetObservable(fastjet::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j );
     
     
   };

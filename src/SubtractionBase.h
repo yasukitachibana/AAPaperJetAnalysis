@@ -11,7 +11,7 @@ public:
     
     virtual ~SubtractionBase();
     
-    virtual std::vector <fjcore::PseudoJet> JetSubtraction(double jetR, std::vector <fjcore::PseudoJet> jets,
+    virtual std::vector <fastjet::PseudoJet> JetSubtraction(double jetR, std::vector <fastjet::PseudoJet> jets,
                                                            std::vector<std::shared_ptr<Particle>> particle_list ){ return jets; }
 
     virtual double ptSubtraction( std::shared_ptr<Particle> particle ){ return  particle->perp(); }

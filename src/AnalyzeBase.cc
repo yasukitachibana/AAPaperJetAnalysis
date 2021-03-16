@@ -40,7 +40,7 @@ void AnalyzeBase::Init()
   
 
   
-  jetDef = new fjcore::JetDefinition(fjcore::antikt_algorithm, jetR);
+  jetDef = new fastjet::JetDefinition(fastjet::antikt_algorithm, jetR);
   
 }
 
@@ -426,7 +426,7 @@ bool AnalyzeBase::HadTrigger(std::shared_ptr<Particle> p, std::vector<std::array
 }
 
 
-bool AnalyzeBase::JetTrigger(fjcore::PseudoJet jet, std::vector<std::array<int, 2>> &i_j ){
+bool AnalyzeBase::JetTrigger(fastjet::PseudoJet jet, std::vector<std::array<int, 2>> &i_j ){
   
   double pt_jet = jet.perp();
   double rapidity_jet = GetRapidity(jet);
@@ -455,7 +455,7 @@ bool AnalyzeBase::JetTrigger(fjcore::PseudoJet jet, std::vector<std::array<int, 
 void AnalyzeBase::OneEventAnalysis(std::vector<std::shared_ptr<Particle>> particle_list){
   
   
-  std::vector <fjcore::PseudoJet> jets = JetReconstruction(particle_list);
+  std::vector <fastjet::PseudoJet> jets = JetReconstruction(particle_list);
   
   for(auto j:jets){
     
@@ -482,21 +482,21 @@ void AnalyzeBase::OneEventAnalysis(std::vector<std::shared_ptr<Particle>> partic
 
 
 
-std::vector<fjcore::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list ){
+std::vector<fastjet::PseudoJet> AnalyzeBase::JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list ){
   
-  std::vector <fjcore::PseudoJet> fj_inputs;
+  std::vector <fastjet::PseudoJet> fj_inputs;
   
   for( auto p : particle_list ){
     if( p->GetStat() >= 0 ){
-      fjcore::PseudoJet fj_particle = p->GetPseudoJet();
+      fastjet::PseudoJet fj_particle = p->GetPseudoJet();
       fj_inputs.push_back(fj_particle);
       
     }
   }
   
-  fjcore::ClusterSequence clustSeq(fj_inputs, *jetDef);
+  fastjet::ClusterSequence clustSeq(fj_inputs, *jetDef);
   
-  std::vector <fjcore::PseudoJet> jets = sorted_by_pt( clustSeq.inclusive_jets( jetPtCut ) );
+  std::vector <fastjet::PseudoJet> jets = sorted_by_pt( clustSeq.inclusive_jets( jetPtCut ) );
   
   jets = sub_ptr->JetSubtraction(jetR, jets, particle_list);
   
@@ -567,7 +567,7 @@ bool AnalyzeBase::RapidityCut( std::shared_ptr<Particle> p ){
   
 }
 
-double AnalyzeBase::GetRapidity( fjcore::PseudoJet j ){
+double AnalyzeBase::GetRapidity( fastjet::PseudoJet j ){
   
   if( hadRapidity == 0){
     return j.rapidity();

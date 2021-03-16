@@ -5,7 +5,8 @@
 #include "LoadFileBase.h"
 #include "LoadJetScapeAscii.h"
 #include "Pythia8/Pythia.h"
-#include "../fjcore/fjcore.hh"
+//#include "../fjcore/fjcore.hh"
+#include "fastjet/ClusterSequence.hh"
 #include "SubtractionBase.h"
 #include "SubNegatives.h"
 
@@ -49,9 +50,9 @@ protected:
   
 private:
   
-  fjcore::JetDefinition *jetDef;
+  fastjet::JetDefinition *jetDef;
   
-  virtual void SetObservable(fjcore::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j ){}
+  virtual void SetObservable(fastjet::PseudoJet jet, std::vector<std::shared_ptr<Particle>> particle_list, std::vector<std::array<int, 2>> i_j ){}
   
   virtual void OneEventAnalysis(std::vector<std::shared_ptr<Particle>> particle_list);
   
@@ -60,7 +61,7 @@ private:
   void EventEndMark(std::vector<std::shared_ptr<Particle>> &particle_list, int &event_num);
   
   
-  std::vector<fjcore::PseudoJet> JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list );
+  std::vector<fastjet::PseudoJet> JetReconstruction( std::vector<std::shared_ptr<Particle>> particle_list );
   
   bool RapidityCut( std::shared_ptr<Particle> p );
   
@@ -74,11 +75,11 @@ private:
   void InitHist();
   void DeleteHist();
   
-  bool JetTrigger(fjcore::PseudoJet jets, std::vector<std::array<int, 2>> &i_j );
+  bool JetTrigger(fastjet::PseudoJet jets, std::vector<std::array<int, 2>> &i_j );
   
   
   double GetRapidity( std::shared_ptr<Particle> p );
-  double GetRapidity( fjcore::PseudoJet j );
+  double GetRapidity( fastjet::PseudoJet j );
 
 
   bool StatCheck(std::shared_ptr<Particle> p);

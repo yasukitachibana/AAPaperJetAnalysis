@@ -2,7 +2,8 @@
 #define PARTICLE_H_
 
 //#include "Pythia8/Pythia.h"
-#include "../fjcore/fjcore.hh"
+//#include "../fjcore/fjcore.hh"
+#include "fastjet/PseudoJet.hh"
 #include <vector>
 
 
@@ -44,14 +45,14 @@ public:
     int GetPID(){return pid;}
     int GetStat(){return stat;}
     int GetTag(){return tag;}
-    fjcore::PseudoJet GetPseudoJet(){return pseudo_jet;}
+    fastjet::PseudoJet GetPseudoJet(){return pseudo_jet;}
     
 private:
     
     int pid;
     int stat;
     int tag;
-    fjcore::PseudoJet pseudo_jet;
+    fastjet::PseudoJet pseudo_jet;
     
     
 };

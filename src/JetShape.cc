@@ -15,7 +15,7 @@ std::string JetShape::ObservableName(){
   return "JetShape";
 }
 
-void JetShape::SetObservable(fjcore::PseudoJet jet,
+void JetShape::SetObservable(fastjet::PseudoJet jet,
                              std::vector<std::shared_ptr<Particle>> particle_list,
                              std::vector<std::array<int, 2>> i_j ){
   

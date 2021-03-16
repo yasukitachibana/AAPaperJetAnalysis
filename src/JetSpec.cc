@@ -15,7 +15,7 @@ std::string JetSpec::ObservableName(){
     return "JetSpec";
 }
 
-void JetSpec::SetObservable(fjcore::PseudoJet jet,
+void JetSpec::SetObservable(fastjet::PseudoJet jet,
                             std::vector<std::shared_ptr<Particle>> particle_list,
                             std::vector<std::array<int, 2>> i_j ){
     for( auto ij: i_j){

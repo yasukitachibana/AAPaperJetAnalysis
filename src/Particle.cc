@@ -6,7 +6,7 @@ Particle::Particle(int pid_in, int stat_in, int tag_in,
     pid = pid_in;
     stat = stat_in;
     tag = tag_in;
-    pseudo_jet = fjcore::PseudoJet(px,py,pz,e);
+    pseudo_jet = fastjet::PseudoJet(px,py,pz,e);
     
 }
 
@@ -16,7 +16,7 @@ Particle::Particle(int pid_in, int stat_in, int tag_in, std::vector<double> p )
     pid = pid_in;
     stat = stat_in;
     tag = tag_in;
-    pseudo_jet = fjcore::PseudoJet(p[1],p[2],p[3],p[0]);
+    pseudo_jet = fastjet::PseudoJet(p[1],p[2],p[3],p[0]);
     
 }
 

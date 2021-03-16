@@ -11,11 +11,11 @@ SubNegatives::~SubNegatives(){
     std::cout << "-$-Deleting SubNegatives"<<std::endl;
 }
 
-std::vector <fjcore::PseudoJet>
-SubNegatives::JetSubtraction(double jetR, std::vector <fjcore::PseudoJet> jets_in,
+std::vector <fastjet::PseudoJet>
+SubNegatives::JetSubtraction(double jetR, std::vector <fastjet::PseudoJet> jets_in,
                std::vector<std::shared_ptr<Particle>> particle_list )
 {
-    std::vector <fjcore::PseudoJet> jets_out;
+    std::vector <fastjet::PseudoJet> jets_out;
     
     for( auto& j : jets_in ){
         

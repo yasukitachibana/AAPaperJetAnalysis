@@ -5,6 +5,7 @@
 //#include "../fjcore/fjcore.hh"
 #include "fastjet/PseudoJet.hh"
 #include <vector>
+#include <memory>
 
 
 class Particle{
